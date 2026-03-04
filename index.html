@@ -183,6 +183,28 @@
                 padding-right: 1rem !important;
             }
 
+            #main-header .serif-elite.text-2xl {
+                font-size: 0.95rem;
+                letter-spacing: 0.18rem;
+                line-height: 1.15;
+            }
+
+            #main-header .serif-elite.text-2xl span {
+                font-size: 0.4rem;
+                letter-spacing: 0.3rem;
+            }
+
+            #menu-toggle {
+                width: 2.5rem;
+                height: 2.5rem;
+                flex-shrink: 0;
+            }
+
+            #menu-toggle i {
+                width: 0.95rem;
+                height: 0.95rem;
+            }
+
             h1 {
                 font-size: clamp(2.6rem, 13vw, 4.2rem) !important;
                 margin-bottom: 1.75rem !important;
@@ -271,8 +293,8 @@
 
     <!-- Header -->
     <header id="main-header" class="fixed top-0 w-full z-[1000] py-6 transition-all duration-700 header-divider">
-        <div class="container mx-auto px-6 lg:px-8 flex justify-between items-center">
-            <div class="serif-elite text-2xl font-black tracking-[8px] flex flex-col cursor-pointer" onclick="window.scrollTo(0,0)">
+        <div class="container mx-auto px-6 lg:px-8 flex justify-between items-center gap-3 md:gap-4">
+            <div class="serif-elite text-2xl font-black tracking-[8px] flex flex-col cursor-pointer min-w-0" onclick="window.scrollTo(0,0)">
                 TRICOMED <span class="text-[8px] tracking-[12px] text-[#d4af37] font-sans font-bold">CLINIC ISTANBUL</span>
             </div>
             
