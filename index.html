@@ -100,11 +100,10 @@
             backdrop-filter: blur(20px);
             padding-top: 1rem !important;
             padding-bottom: 1rem !important;
-            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
         }
 
         .header-divider {
-            border-bottom: 1px solid rgba(212, 175, 55, 0.25);
+            border-bottom: none;
         }
 
         @keyframes changeGlow {
@@ -713,7 +712,7 @@
     <section id="blog" class="py-40 bg-zinc-950">
         <div class="container mx-auto px-6">
             <div class="flex flex-col md:flex-row justify-between items-end mb-24">
-                <h2 class="serif-elite text-5xl md:text-7xl flex items-center gap-4">Clinic <span class="text-[#d4af37]">Academy</span> <i data-lucide="laugh" class="w-10 h-10 text-[#d4af37]/80"></i></h2>
+                <h2 class="serif-elite text-5xl md:text-7xl flex items-center gap-4">Clinic <span class="text-[#d4af37]">Academy</span></h2>
                 <a href="#" class="text-[#d4af37] text-[10px] font-bold tracking-[4px] uppercase border-b border-[#d4af37] pb-2">View All</a>
             </div>
 
@@ -960,11 +959,21 @@
         // Academy Carousel
         const swiper = new Swiper('.academySwiper', {
             slidesPerView: 1,
-            spaceBetween: 30,
-            loop: false,
+            spaceBetween: 20,
+            loop: true,
+            grabCursor: true,
+            centeredSlides: false,
             breakpoints: {
-                768: { slidesPerView: 2 },
-                1024: { slidesPerView: 3 }
+                768: {
+                    slidesPerView: 2,
+                    spaceBetween: 24,
+                    loop: false
+                },
+                1024: {
+                    slidesPerView: 3,
+                    spaceBetween: 30,
+                    loop: false
+                }
             }
         });
     </script>
