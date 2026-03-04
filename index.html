@@ -140,30 +140,32 @@
 <body>
 
     <!-- Header -->
-    <header id="main-header" class="fixed top-0 w-full z-[1000] py-6 px-4 md:px-10 flex justify-between items-center transition-all duration-700 header-divider">
-        <div class="serif-elite text-2xl font-black tracking-[8px] flex flex-col cursor-pointer" onclick="window.scrollTo(0,0)">
-            TRICOMED <span class="text-[8px] tracking-[12px] text-[#d4af37] font-sans font-bold">CLINIC ISTANBUL</span>
-        </div>
-        
-        <nav class="hidden xl:flex items-center space-x-10 text-[9px] font-bold tracking-[4px] uppercase">
-            <a href="#" class="text-white/70 hover:text-white transition">Home</a>
-            <a href="#results" class="text-white/70 hover:text-white transition">Cases</a>
-            <a href="#aesthetic-solutions" class="text-white/70 hover:text-white transition">Aesthetics</a>
-            <a href="#tech" class="text-white/70 hover:text-white transition">Technology</a>
-            <a href="#journey" class="text-white/70 hover:text-white transition">Journey</a>
-            <a href="#blog" class="text-white/70 hover:text-white transition">Academy</a>
-            <div class="h-4 w-px bg-white/10 mx-2"></div>
-            <a href="#contact" class="text-[#d4af37] border-b border-[#d4af37] pb-1 hover:text-white hover:border-white transition">Book Appointment</a>
-        </nav>
-
-        <div class="flex items-center space-x-6">
-            <div class="hidden lg:flex flex-col items-end mr-4">
-                <span class="text-[8px] text-[#d4af37] font-bold tracking-widest">VIP CONCIERGE</span>
-                <span class="text-sm font-light tracking-widest">+90 546 737 22 84</span>
+    <header id="main-header" class="fixed top-0 w-full z-[1000] py-6 transition-all duration-700 header-divider">
+        <div class="container mx-auto px-6 lg:px-8 flex justify-between items-center">
+            <div class="serif-elite text-2xl font-black tracking-[8px] flex flex-col cursor-pointer" onclick="window.scrollTo(0,0)">
+                TRICOMED <span class="text-[8px] tracking-[12px] text-[#d4af37] font-sans font-bold">CLINIC ISTANBUL</span>
             </div>
-            <button id="menu-toggle" class="w-12 h-12 glass-panel rounded-full flex items-center justify-center" aria-label="Open menu">
-                <i data-lucide="menu" class="w-4 h-4"></i>
-            </button>
+            
+            <nav class="hidden xl:flex items-center space-x-10 text-[9px] font-bold tracking-[4px] uppercase">
+                <a href="#" class="text-white/70 hover:text-white transition">Home</a>
+                <a href="#results" class="text-white/70 hover:text-white transition">Cases</a>
+                <a href="#aesthetic-solutions" class="text-white/70 hover:text-white transition">Aesthetics</a>
+                <a href="#tech" class="text-white/70 hover:text-white transition">Technology</a>
+                <a href="#journey" class="text-white/70 hover:text-white transition">Journey</a>
+                <a href="#blog" class="text-white/70 hover:text-white transition">Academy</a>
+                <div class="h-4 w-px bg-white/10 mx-2"></div>
+                <button type="button" class="open-contact-form text-[#d4af37] border-b border-[#d4af37] pb-1 hover:text-white hover:border-white transition">Book Appointment</button>
+            </nav>
+
+            <div class="flex items-center space-x-6">
+                <div class="hidden lg:flex flex-col items-end mr-4">
+                    <span class="text-[8px] text-[#d4af37] font-bold tracking-widest">VIP CONCIERGE</span>
+                    <span class="text-sm font-light tracking-widest">+90 546 737 22 84</span>
+                </div>
+                <button id="menu-toggle" class="w-12 h-12 glass-panel rounded-full flex items-center justify-center" aria-label="Open menu">
+                    <i data-lucide="menu" class="w-4 h-4"></i>
+                </button>
+            </div>
         </div>
     </header>
 
@@ -184,7 +186,7 @@
                     <a class="block hover:text-[#d4af37] transition" href="#tech">Technology</a>
                     <a class="block hover:text-[#d4af37] transition" href="#journey">Journey</a>
                     <a class="block hover:text-[#d4af37] transition" href="#blog">Clinic Academy</a>
-                    <a class="block text-[#d4af37] hover:text-white transition" href="#contact">Book Appointment</a>
+                    <button type="button" class="open-contact-form block text-[#d4af37] hover:text-white transition">Book Appointment</button>
                 </nav>
             </div>
         </div>
@@ -208,7 +210,7 @@
                     Tricomed Clinic is the most exclusive representative of advanced biotechnology and personalized luxury service in Turkey.
                 </p>
                 <div class="flex flex-wrap gap-6">
-                    <button class="px-12 py-6 bg-[#d4af37] text-black font-bold text-[10px] tracking-[4px] uppercase hover:bg-white transition-all shadow-[0_10px_40px_rgba(212,175,55,0.3)]">
+                    <button type="button" class="open-contact-form px-12 py-6 bg-[#d4af37] text-black font-bold text-[10px] tracking-[4px] uppercase hover:bg-white transition-all shadow-[0_10px_40px_rgba(212,175,55,0.3)]">
                         Free Analysis
                     </button>
                     <button class="px-12 py-6 glass-panel font-bold text-[10px] tracking-[4px] uppercase border border-white/10">
@@ -655,6 +657,31 @@
         </div>
     </footer>
 
+
+
+    <!-- Contact Form Popup -->
+    <div id="contact-popup" class="menu-popup fixed inset-0 z-[1200] bg-black/80 backdrop-blur-md">
+        <div class="h-full flex items-center justify-center p-6">
+            <div class="w-full max-w-xl glass-panel rounded-[30px] p-6 md:p-8 border border-[#d4af37]/30">
+                <div class="flex items-center justify-between mb-6">
+                    <h3 class="serif-elite text-3xl">Book Free Analysis</h3>
+                    <button id="contact-close" class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:border-[#d4af37] transition" aria-label="Close form">
+                        <i data-lucide="x" class="w-5 h-5"></i>
+                    </button>
+                </div>
+                <form id="contact-form" class="space-y-4">
+                    <input id="contact-name" type="text" placeholder="Full Name" required class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-[#d4af37]">
+                    <input id="contact-phone" type="tel" placeholder="Phone Number" required class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-[#d4af37]">
+                    <input id="contact-email" type="email" placeholder="Email" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-[#d4af37]">
+                    <textarea id="contact-message" placeholder="Your Request" rows="4" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-[#d4af37]"></textarea>
+                    <button type="submit" class="w-full px-8 py-4 bg-[#d4af37] text-black font-bold text-[11px] tracking-[4px] uppercase hover:bg-white transition-all">
+                        Gönder ve WhatsApp'ta Aç
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
     <!-- WhatsApp Floating -->
     <a href="https://wa.me/905467372284" class="fixed bottom-10 right-10 z-[2000] group">
         <div class="absolute -inset-4 bg-[#25D366]/20 rounded-full animate-ping group-hover:bg-[#25D366]/40"></div>
@@ -694,6 +721,49 @@
             if (event.target === menuPopup) {
                 menuPopup.classList.remove('active');
             }
+        });
+
+        const contactPopup = document.getElementById('contact-popup');
+        const contactClose = document.getElementById('contact-close');
+        const contactForm = document.getElementById('contact-form');
+        const openContactButtons = document.querySelectorAll('.open-contact-form');
+
+        openContactButtons.forEach((button) => {
+            button.addEventListener('click', () => {
+                menuPopup.classList.remove('active');
+                contactPopup.classList.add('active');
+            });
+        });
+
+        contactClose.addEventListener('click', () => {
+            contactPopup.classList.remove('active');
+        });
+
+        contactPopup.addEventListener('click', (event) => {
+            if (event.target === contactPopup) {
+                contactPopup.classList.remove('active');
+            }
+        });
+
+        contactForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+            const name = document.getElementById('contact-name').value.trim();
+            const phone = document.getElementById('contact-phone').value.trim();
+            const email = document.getElementById('contact-email').value.trim();
+            const message = document.getElementById('contact-message').value.trim();
+
+            const text = [
+                'Merhaba Tricomed,',
+                `İsim: ${name}`,
+                `Telefon: ${phone}`,
+                email ? `E-posta: ${email}` : null,
+                message ? `Talep: ${message}` : null
+            ].filter(Boolean).join('\n');
+
+            const whatsappUrl = `https://wa.me/905467372284?text=${encodeURIComponent(text)}`;
+            window.open(whatsappUrl, '_blank');
+            contactPopup.classList.remove('active');
+            contactForm.reset();
         });
 
         // Academy Carousel
