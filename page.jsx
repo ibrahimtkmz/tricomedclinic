@@ -22,9 +22,14 @@
             background-color: #000; 
             color: #fff;
             scroll-behavior: smooth;
+            overflow-x: hidden;
         }
 
         .serif-elite { font-family: 'Cinzel', serif; }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
 
         /* Custom Scrollbar */
         ::-webkit-scrollbar { width: 6px; }
@@ -135,7 +140,7 @@
 <body>
 
     <!-- Header -->
-    <header id="main-header" class="fixed top-0 w-full z-[1000] py-6 px-10 flex justify-between items-center transition-all duration-700 header-divider">
+    <header id="main-header" class="fixed top-0 w-full z-[1000] py-6 px-4 md:px-10 flex justify-between items-center transition-all duration-700 header-divider">
         <div class="serif-elite text-2xl font-black tracking-[8px] flex flex-col cursor-pointer" onclick="window.scrollTo(0,0)">
             TRICOMED <span class="text-[8px] tracking-[12px] text-[#d4af37] font-sans font-bold">CLINIC ISTANBUL</span>
         </div>
