@@ -237,30 +237,27 @@
             <div class="grid md:grid-cols-3 gap-8">
                 <!-- Case 1 -->
                 <div class="ba-card group cursor-pointer">
-                    <img src="https://images.unsplash.com/photo-1620331311520-246422fd82f9?auto=format&fit=crop&q=80" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" alt="Before After 1">
+                    <img src="Natural.png" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" alt="Before After 1">
                     <div class="absolute inset-0 ba-overlay p-10 flex flex-col justify-end">
                         <span class="text-[#d4af37] text-[10px] font-bold tracking-[4px] uppercase mb-2">Sapphire FUE - 4500 Grafts</span>
                         <h4 class="serif-elite text-2xl">Natural Hairline Design</h4>
                     </div>
-                    <div class="absolute top-6 left-6 bg-black/60 backdrop-blur-md px-4 py-2 border border-white/10 text-[9px] font-bold tracking-widest uppercase">12 Months After</div>
                 </div>
                 <!-- Case 2 -->
                 <div class="ba-card group cursor-pointer">
-                    <img src="https://images.unsplash.com/photo-1519419691348-3b3bb640342a?auto=format&fit=crop&q=80" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" alt="Before After 2">
+                    <img src="maximum.jpg" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" alt="Before After 2">
                     <div class="absolute inset-0 ba-overlay p-10 flex flex-col justify-end">
                         <span class="text-[#d4af37] text-[10px] font-bold tracking-[4px] uppercase mb-2">DHI Technique - 3800 Grafts</span>
                         <h4 class="serif-elite text-2xl">Maximum Density Application</h4>
                     </div>
-                    <div class="absolute top-6 left-6 bg-black/60 backdrop-blur-md px-4 py-2 border border-white/10 text-[9px] font-bold tracking-widest uppercase">9 Months After</div>
                 </div>
                 <!-- Case 3 -->
                 <div class="ba-card group cursor-pointer">
-                    <img src="https://images.unsplash.com/photo-1590159609029-79a0c0e7047d?auto=format&fit=crop&q=80" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" alt="Before After 3">
+                    <img src="Corrective.jpg" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" alt="Before After 3">
                     <div class="absolute inset-0 ba-overlay p-10 flex flex-col justify-end">
                         <span class="text-[#d4af37] text-[10px] font-bold tracking-[4px] uppercase mb-2">Revision Procedure</span>
                         <h4 class="serif-elite text-2xl">Corrective Hair Transplant</h4>
                     </div>
-                    <div class="absolute top-6 left-6 bg-black/60 backdrop-blur-md px-4 py-2 border border-white/10 text-[9px] font-bold tracking-widest uppercase">14 Months After</div>
                 </div>
             </div>
         </div>
