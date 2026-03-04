@@ -104,7 +104,24 @@
         }
 
         .header-divider {
-            border-bottom: none;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.25);
+        }
+
+        @keyframes changeGlow {
+            0%, 100% {
+                color: transparent;
+                -webkit-text-stroke-color: rgba(212, 175, 55, 0.3);
+                text-shadow: 0 0 0 rgba(212, 175, 55, 0);
+            }
+            50% {
+                color: rgba(212, 175, 55, 0.22);
+                -webkit-text-stroke-color: rgba(212, 175, 55, 0.9);
+                text-shadow: 0 0 24px rgba(212, 175, 55, 0.55);
+            }
+        }
+
+        .change-anim {
+            animation: changeGlow 2.4s ease-in-out infinite;
         }
 
         .menu-popup {
@@ -199,7 +216,7 @@
             <div class="lg:col-span-7 z-10">
                 <h1 class="serif-elite text-6xl md:text-9xl mb-10 leading-tight">
                     Perfect <br> 
-                    <span class="text-stroke">Change</span> <br>
+                    <span class="text-stroke change-anim">Change</span> <br>
                     <span class="text-[#d4af37]">Design</span>
                 </h1>
                 <p class="text-white/50 text-xl font-light max-w-xl mb-12 leading-relaxed">
@@ -243,7 +260,7 @@
                 </div>
                 <!-- Case 2 -->
                 <div class="ba-card group cursor-pointer">
-                    <img src="maximum.jpg" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" alt="Before After 2">
+                    <img src="maximum.jpg" class="w-full h-full object-contain object-center bg-black grayscale group-hover:grayscale-0 transition-all duration-700" alt="Before After 2">
                     <div class="absolute inset-0 ba-overlay p-10 flex flex-col justify-end">
                         <span class="text-[#d4af37] text-[10px] font-bold tracking-[4px] uppercase mb-2">DHI Technique - 3800 Grafts</span>
                         <h4 class="serif-elite text-2xl">Maximum Density Application</h4>
@@ -462,6 +479,7 @@
                         <span class="text-7xl serif-elite text-white/5">01</span>
                         <h4 class="serif-elite text-3xl mb-4 text-[#d4af37]">Digital Consultation</h4>
                         <p class="text-white/40 text-sm max-w-sm ml-auto">Receive the first evaluation from our experts from your own home, using high-resolution photos.</p>
+                        <p class="text-white/35 text-xs max-w-sm ml-auto mt-3">We also match you to a package structure (Comfort, Signature or Prestige) so your travel, transfer and follow-up expectations are clear from day one.</p>
                     </div>
                     <div class="hidden md:block"></div>
                     <div class="absolute left-1/2 top-0 -translate-x-1/2 w-4 h-4 bg-[#d4af37] rounded-full shadow-[0_0_20px_#d4af37]"></div>
@@ -473,7 +491,8 @@
                     <div>
                         <span class="text-7xl serif-elite text-white/5">02</span>
                         <h4 class="serif-elite text-3xl mb-4 text-[#d4af37]">VIP Transfer & Accommodation</h4>
-                        <p class="text-white/40 text-sm max-w-sm">Upon your arrival in Istanbul, you will be met by your assistant and settled into your 5-star hotel.</p>
+                        <p class="text-white/40 text-sm max-w-sm">Upon your arrival in Istanbul, you will be met by your assistant and settled into your hotel.</p>
+                        <p class="text-white/35 text-xs max-w-sm mt-3">From private airport pickup to city transfers, every package includes a coordinated hospitality flow and multilingual support.</p>
                     </div>
                     <div class="absolute left-1/2 top-0 -translate-x-1/2 w-4 h-4 bg-[#d4af37] rounded-full"></div>
                 </div>
@@ -484,6 +503,7 @@
                         <span class="text-7xl serif-elite text-white/5">03</span>
                         <h4 class="serif-elite text-3xl mb-4 text-[#d4af37]">Clinic Design & Testing</h4>
                         <p class="text-white/40 text-sm max-w-sm ml-auto">On the morning of the operation, advanced blood tests and the final drawing of your new hairline with the golden ratio are performed.</p>
+                        <p class="text-white/35 text-xs max-w-sm ml-auto mt-3">Your surgeon decides whether Sapphire FUE, DHI, or a hybrid protocol should be prioritized for the density and naturalness targets in your chosen package.</p>
                     </div>
                     <div class="hidden md:block"></div>
                     <div class="absolute left-1/2 top-0 -translate-x-1/2 w-4 h-4 bg-[#d4af37] rounded-full"></div>
@@ -496,6 +516,7 @@
                         <span class="text-7xl serif-elite text-white/5">04</span>
                         <h4 class="serif-elite text-3xl mb-4 text-[#d4af37] flex items-center gap-3">Operation Day <i data-lucide="laugh" class="w-6 h-6"></i></h4>
                         <p class="text-white/40 text-sm max-w-sm">A process lasting an average of 6-8 hours, in the comfort of needle-free anesthesia, where you can even watch a movie.</p>
+                        <p class="text-white/35 text-xs max-w-sm mt-3">Sterile operating rooms, graft control protocols and dedicated nurse follow-up are included for all package tiers without compromise.</p>
                     </div>
                     <div class="absolute left-1/2 top-0 -translate-x-1/2 w-4 h-4 bg-[#d4af37] rounded-full"></div>
                 </div>
@@ -507,9 +528,69 @@
                         <span class="text-7xl serif-elite text-white/5">06</span>
                         <h4 class="serif-elite text-3xl mb-4 text-[#d4af37]">1-Year Follow-up</h4>
                         <p class="text-white/40 text-sm max-w-sm">When you return to your country, our medical team continues to monitor your progress digitally for 12 months.</p>
+                        <p class="text-white/35 text-xs max-w-sm mt-3">Monthly check-ins, product recommendations and growth tracking make the aftercare path consistent, regardless of the package you selected.</p>
                     </div>
                     <div class="absolute left-1/2 top-0 -translate-x-1/2 w-4 h-4 bg-[#d4af37] rounded-full shadow-[0_0_20px_#d4af37]"></div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="packages" class="py-32 bg-zinc-950 border-t border-white/10">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="serif-elite text-5xl md:text-7xl">Hair Transplant <span class="text-[#d4af37]">Packages</span></h2>
+                <p class="text-white/45 mt-5 text-sm md:text-base max-w-3xl mx-auto">For clear comparison, we present package contents without showing direct prices. Every package includes surgery, medical care, and 12-month digital follow-up as a standard.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-7">
+                <article class="glass-panel rounded-[28px] p-8">
+                    <h3 class="serif-elite text-3xl mb-4 text-[#d4af37]">Comfort Package</h3>
+                    <ul class="space-y-3 text-white/75 text-sm leading-relaxed list-disc pl-5">
+                        <li>3 days / 2 nights accommodation planning</li>
+                        <li>24/7 translator and patient coordination support</li>
+                        <li>Sapphire FUE-focused hair transplant plan</li>
+                        <li>12-month online aftercare follow-up program</li>
+                    </ul>
+                    <div class="mt-6 pt-5 border-t border-white/10">
+                        <div class="text-center">
+                            <p class="text-xl font-bold tracking-[4px] uppercase text-white/50 blur-sm select-none">€2X00</p>
+                            <p class="text-[10px] font-bold tracking-[3px] uppercase text-[#d4af37] mt-2">Ask for Price</p>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="glass-panel rounded-[28px] p-8 border border-[#d4af37]/40">
+                    <h3 class="serif-elite text-3xl mb-4 text-[#d4af37]">Signature Package</h3>
+                    <ul class="space-y-3 text-white/75 text-sm leading-relaxed list-disc pl-5">
+                        <li>Accommodation process at grand hotel standards</li>
+                        <li>VIP airport + local city transfer plan</li>
+                        <li>Density-focused hybrid DHI/FUE approach</li>
+                        <li>12-month follow-up with a detailed control schedule</li>
+                    </ul>
+                    <div class="mt-6 pt-5 border-t border-white/10">
+                        <div class="text-center">
+                            <p class="text-xl font-bold tracking-[4px] uppercase text-white/50 blur-sm select-none">€2X00</p>
+                            <p class="text-[10px] font-bold tracking-[3px] uppercase text-[#d4af37] mt-2">Ask for Price</p>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="glass-panel rounded-[28px] p-8">
+                    <h3 class="serif-elite text-3xl mb-4 text-[#d4af37]">Prestige Package</h3>
+                    <ul class="space-y-3 text-white/75 text-sm leading-relaxed list-disc pl-5">
+                        <li>Upper-segment accommodation with personalized service</li>
+                        <li>Priority transfer and premium assistance flow</li>
+                        <li>Personalized operation design targeting maximum density</li>
+                        <li>Long-term care, product guidance, and digital checks</li>
+                    </ul>
+                    <div class="mt-6 pt-5 border-t border-white/10">
+                        <div class="text-center">
+                            <p class="text-xl font-bold tracking-[4px] uppercase text-white/50 blur-sm select-none">€2X00</p>
+                            <p class="text-[10px] font-bold tracking-[3px] uppercase text-[#d4af37] mt-2">Ask for Price</p>
+                        </div>
+                    </div>
+                </article>
             </div>
         </div>
     </section>
@@ -671,7 +752,7 @@
                     <input id="contact-email" type="email" placeholder="Email" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-[#d4af37]">
                     <textarea id="contact-message" placeholder="Your Request" rows="4" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-[#d4af37]"></textarea>
                     <button type="submit" class="w-full px-8 py-4 bg-[#d4af37] text-black font-bold text-[11px] tracking-[4px] uppercase hover:bg-white transition-all">
-                        Gönder ve WhatsApp'ta Aç
+                        Submit & Open in WhatsApp
                     </button>
                 </form>
             </div>
@@ -749,11 +830,11 @@
             const message = document.getElementById('contact-message').value.trim();
 
             const text = [
-                'Merhaba Tricomed,',
-                `İsim: ${name}`,
-                `Telefon: ${phone}`,
-                email ? `E-posta: ${email}` : null,
-                message ? `Talep: ${message}` : null
+                'Hello Tricomed,',
+                `Name: ${name}`,
+                `Phone: ${phone}`,
+                email ? `Email: ${email}` : null,
+                message ? `Request: ${message}` : null
             ].filter(Boolean).join('\n');
 
             const whatsappUrl = `https://wa.me/905467372284?text=${encodeURIComponent(text)}`;
