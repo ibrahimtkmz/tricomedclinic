@@ -104,7 +104,7 @@
         }
 
         .header-divider {
-            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+            border-bottom: none;
         }
 
         .menu-popup {
@@ -153,14 +153,14 @@
                 <a href="#journey" class="text-white/70 hover:text-white transition">Journey</a>
                 <a href="#blog" class="text-white/70 hover:text-white transition">Academy</a>
                 <div class="h-4 w-px bg-white/10 mx-2"></div>
-                <button type="button" class="open-contact-form text-[#d4af37] border-b border-[#d4af37] pb-1 hover:text-white hover:border-white transition">Book Appointment</button>
+                <div class="flex flex-col items-start normal-case tracking-normal gap-1">
+                    <button type="button" class="open-contact-form w-fit text-[#d4af37] border-b border-[#d4af37] pb-1 uppercase tracking-[4px] hover:text-white hover:border-white transition">Book Appointment</button>
+                    <span class="text-[8px] text-[#d4af37] font-bold tracking-widest uppercase">VIP CONCIERGE</span>
+                    <span class="text-[11px] font-light tracking-widest">+90 546 737 22 84</span>
+                </div>
             </nav>
 
-            <div class="flex items-center space-x-6">
-                <div class="hidden lg:flex flex-col items-end mr-4">
-                    <span class="text-[8px] text-[#d4af37] font-bold tracking-widest">VIP CONCIERGE</span>
-                    <span class="text-sm font-light tracking-widest">+90 546 737 22 84</span>
-                </div>
+            <div class="flex items-center">
                 <button id="menu-toggle" class="w-12 h-12 glass-panel rounded-full flex items-center justify-center" aria-label="Open menu">
                     <i data-lucide="menu" class="w-4 h-4"></i>
                 </button>
