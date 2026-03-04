@@ -22,6 +22,11 @@
             background-color: #000; 
             color: #fff;
             scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
         }
 
         .serif-elite { font-family: 'Cinzel', serif; }
@@ -98,6 +103,23 @@
             border-bottom: 1px solid rgba(212, 175, 55, 0.2);
         }
 
+        .header-divider {
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .menu-popup {
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(-12px);
+            transition: all 0.35s ease;
+        }
+
+        .menu-popup.active {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateY(0);
+        }
+
         /* Comparison Slider */
         .comparison-slider {
             position: relative;
@@ -118,7 +140,7 @@
 <body>
 
     <!-- Header -->
-    <header id="main-header" class="fixed top-0 w-full z-[1000] py-6 px-10 flex justify-between items-center transition-all duration-700">
+    <header id="main-header" class="fixed top-0 w-full z-[1000] py-6 px-4 md:px-10 flex justify-between items-center transition-all duration-700 header-divider">
         <div class="serif-elite text-2xl font-black tracking-[8px] flex flex-col cursor-pointer" onclick="window.scrollTo(0,0)">
             TRICOMED <span class="text-[8px] tracking-[12px] text-[#d4af37] font-sans font-bold">CLINIC ISTANBUL</span>
         </div>
@@ -138,11 +160,33 @@
                 <span class="text-[8px] text-[#d4af37] font-bold tracking-widest">VIP CONCIERGE</span>
                 <span class="text-sm font-light tracking-widest">+90 546 737 22 84</span>
             </div>
-            <button class="w-12 h-12 glass-panel rounded-full flex items-center justify-center">
+            <button id="menu-toggle" class="w-12 h-12 glass-panel rounded-full flex items-center justify-center" aria-label="Open menu">
                 <i data-lucide="menu" class="w-4 h-4"></i>
             </button>
         </div>
     </header>
+
+    <!-- Popup Menu -->
+    <div id="menu-popup" class="menu-popup fixed inset-0 z-[1100] bg-black/75 backdrop-blur-md">
+        <div class="h-full flex items-start justify-end p-6 md:p-10">
+            <div class="w-full max-w-sm glass-panel rounded-[30px] p-8 border border-[#d4af37]/30">
+                <div class="flex items-center justify-between mb-8">
+                    <h3 class="serif-elite text-2xl">Quick Menu</h3>
+                    <button id="menu-close" class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:border-[#d4af37] transition" aria-label="Close menu">
+                        <i data-lucide="x" class="w-5 h-5"></i>
+                    </button>
+                </div>
+                <nav class="space-y-5 text-[11px] tracking-[3px] uppercase font-bold text-white/70">
+                    <a class="block hover:text-[#d4af37] transition" href="#">Home</a>
+                    <a class="block hover:text-[#d4af37] transition" href="#results">Cases</a>
+                    <a class="block hover:text-[#d4af37] transition" href="#tech">Technology</a>
+                    <a class="block hover:text-[#d4af37] transition" href="#journey">Journey</a>
+                    <a class="block hover:text-[#d4af37] transition" href="#blog">Clinic Academy</a>
+                    <a class="block text-[#d4af37] hover:text-white transition" href="#contact">Book Appointment</a>
+                </nav>
+            </div>
+        </div>
+    </div>
 
     <!-- Hero Section -->
     <section class="relative min-h-screen flex items-center justify-center pt-20 px-6">
@@ -292,7 +336,7 @@
                 <!-- Feature 2: Safir Blade -->
                 <div class="col-span-12 lg:col-span-4 glass-panel p-10 rounded-[40px] group">
                     <i data-lucide="gem" class="w-12 h-12 text-[#d4af37] mb-8"></i>
-                    <h3 class="serif-elite text-2xl mb-4 text-[#d4af37]">Sapphire Clinic Blade</h3>
+                    <h3 class="serif-elite text-2xl mb-4 text-[#d4af37] flex items-center gap-3">Sapphire Clinic Blade <i data-lucide="laugh" class="w-5 h-5"></i></h3>
                     <p class="text-white/40 text-xs leading-relaxed mb-8">Blades made from genuine sapphire gemstones open smoother channels compared to steel blades, keeping tissue trauma near zero.</p>
                     <div class="w-full h-44 bg-white/5 rounded-3xl overflow-hidden">
                         <img src="https://images.unsplash.com/photo-1579154235602-3c2c24fd2398?auto=format&fit=crop&q=80" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" alt="Technology">
@@ -410,7 +454,7 @@
                     <div class="hidden md:block"></div>
                     <div>
                         <span class="text-7xl serif-elite text-white/5">04</span>
-                        <h4 class="serif-elite text-3xl mb-4 text-[#d4af37]">Operation Day</h4>
+                        <h4 class="serif-elite text-3xl mb-4 text-[#d4af37] flex items-center gap-3">Operation Day <i data-lucide="laugh" class="w-6 h-6"></i></h4>
                         <p class="text-white/40 text-sm max-w-sm">A process lasting an average of 6-8 hours, in the comfort of needle-free anesthesia, where you can even watch a movie.</p>
                     </div>
                     <div class="absolute left-1/2 top-0 -translate-x-1/2 w-4 h-4 bg-[#d4af37] rounded-full"></div>
@@ -434,7 +478,7 @@
     <section id="blog" class="py-40 bg-zinc-950">
         <div class="container mx-auto px-6">
             <div class="flex flex-col md:flex-row justify-between items-end mb-24">
-                <h2 class="serif-elite text-5xl md:text-7xl">Clinic <span class="text-[#d4af37]">Academy</span></h2>
+                <h2 class="serif-elite text-5xl md:text-7xl flex items-center gap-4">Clinic <span class="text-[#d4af37]">Academy</span> <i data-lucide="laugh" class="w-10 h-10 text-[#d4af37]/80"></i></h2>
                 <a href="#" class="text-[#d4af37] text-[10px] font-bold tracking-[4px] uppercase border-b border-[#d4af37] pb-2">View All</a>
             </div>
 
@@ -459,6 +503,28 @@
                             </div>
                             <h3 class="serif-elite text-2xl mb-4 group-hover:text-[#d4af37] transition">What is Exosome Therapy?</h3>
                             <p class="text-white/40 text-sm mb-8">Discover this miraculous technology that enables communication between cells.</p>
+                            <i data-lucide="arrow-right" class="w-6 h-6 text-[#d4af37] group-hover:translate-x-3 transition"></i>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="glass-panel p-10 rounded-[40px] group cursor-pointer">
+                            <div class="w-full h-64 rounded-3xl overflow-hidden mb-8 relative">
+                                <img src="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?auto=format&fit=crop&q=80" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-110" alt="Blog 3">
+                                <div class="absolute top-4 right-4 bg-black/60 backdrop-blur-md px-4 py-2 rounded-full text-[8px] font-bold tracking-widest text-[#d4af37]">CARE</div>
+                            </div>
+                            <h3 class="serif-elite text-2xl mb-4 group-hover:text-[#d4af37] transition">Funny Truths About Post-Op Hair Washing</h3>
+                            <p class="text-white/40 text-sm mb-8">A practical guide to washing routine mistakes with easy fixes from our medical team.</p>
+                            <i data-lucide="arrow-right" class="w-6 h-6 text-[#d4af37] group-hover:translate-x-3 transition"></i>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="glass-panel p-10 rounded-[40px] group cursor-pointer">
+                            <div class="w-full h-64 rounded-3xl overflow-hidden mb-8 relative">
+                                <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&q=80" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-110" alt="Blog 4">
+                                <div class="absolute top-4 right-4 bg-black/60 backdrop-blur-md px-4 py-2 rounded-full text-[8px] font-bold tracking-widest text-[#d4af37]">PLANNING</div>
+                            </div>
+                            <h3 class="serif-elite text-2xl mb-4 group-hover:text-[#d4af37] transition">How We Design Cartoon-Like Natural Hairlines</h3>
+                            <p class="text-white/40 text-sm mb-8">See the sketch-to-reality process behind soft temple angles and natural forehead framing.</p>
                             <i data-lucide="arrow-right" class="w-6 h-6 text-[#d4af37] group-hover:translate-x-3 transition"></i>
                         </div>
                     </div>
@@ -567,6 +633,24 @@
                 header.classList.add('header-scrolled');
             } else {
                 header.classList.remove('header-scrolled');
+            }
+        });
+
+        const menuPopup = document.getElementById('menu-popup');
+        const menuToggle = document.getElementById('menu-toggle');
+        const menuClose = document.getElementById('menu-close');
+
+        menuToggle.addEventListener('click', () => {
+            menuPopup.classList.add('active');
+        });
+
+        menuClose.addEventListener('click', () => {
+            menuPopup.classList.remove('active');
+        });
+
+        menuPopup.addEventListener('click', (event) => {
+            if (event.target === menuPopup) {
+                menuPopup.classList.remove('active');
             }
         });
 
