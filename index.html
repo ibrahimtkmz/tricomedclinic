@@ -25,6 +25,16 @@
             overflow-x: hidden;
         }
 
+        html, body {
+            width: 100%;
+            max-width: 100%;
+        }
+
+        body.modal-open {
+            overflow: hidden;
+            touch-action: none;
+        }
+
         *, *::before, *::after {
             box-sizing: border-box;
         }
@@ -128,6 +138,9 @@
             pointer-events: none;
             transform: translateY(-12px);
             transition: all 0.35s ease;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+            overscroll-behavior: contain;
         }
 
         .menu-popup.active {
@@ -328,15 +341,17 @@
             #contact-popup .h-full {
                 align-items: flex-end;
                 padding: 0.5rem;
+                min-height: 100dvh;
             }
 
             #contact-popup .max-w-xl {
                 max-width: 100%;
                 width: 100%;
-                max-height: 92vh;
+                max-height: min(92vh, 92dvh);
                 overflow-y: auto;
                 border-radius: 1.1rem;
                 padding: 1rem;
+                padding-bottom: calc(1rem + env(safe-area-inset-bottom));
             }
 
             #contact-popup h3 {
@@ -389,6 +404,28 @@
                 gap: 0.85rem;
                 margin-bottom: 0.9rem;
                 align-items: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .serif-elite.text-2xl {
+                letter-spacing: 0.12rem !important;
+            }
+
+            .serif-elite.text-2xl span {
+                letter-spacing: 0.18rem !important;
+            }
+
+            h6[class*="tracking-"],
+            p[class*="tracking-"],
+            a[class*="tracking-"],
+            button[class*="tracking-"] {
+                letter-spacing: 0.12rem !important;
+            }
+
+            .fixed.bottom-10.right-10 {
+                right: 0.75rem;
+                bottom: 0.75rem;
             }
         }
     </style>
@@ -1025,39 +1062,51 @@
         const menuToggle = document.getElementById('menu-toggle');
         const menuClose = document.getElementById('menu-close');
 
-        menuToggle.addEventListener('click', () => {
-            menuPopup.classList.add('active');
-        });
-
-        menuClose.addEventListener('click', () => {
-            menuPopup.classList.remove('active');
-        });
-
-        menuPopup.addEventListener('click', (event) => {
-            if (event.target === menuPopup) {
-                menuPopup.classList.remove('active');
-            }
-        });
-
         const contactPopup = document.getElementById('contact-popup');
         const contactClose = document.getElementById('contact-close');
         const contactForm = document.getElementById('contact-form');
         const openContactButtons = document.querySelectorAll('.open-contact-form');
 
+        const openPopup = (popupElement) => {
+            popupElement.classList.add('active');
+            document.body.classList.add('modal-open');
+        };
+
+        const closePopup = (popupElement) => {
+            popupElement.classList.remove('active');
+            if (!menuPopup.classList.contains('active') && !contactPopup.classList.contains('active')) {
+                document.body.classList.remove('modal-open');
+            }
+        };
+
+        menuToggle.addEventListener('click', () => {
+            openPopup(menuPopup);
+        });
+
+        menuClose.addEventListener('click', () => {
+            closePopup(menuPopup);
+        });
+
+        menuPopup.addEventListener('click', (event) => {
+            if (event.target === menuPopup) {
+                closePopup(menuPopup);
+            }
+        });
+
         openContactButtons.forEach((button) => {
             button.addEventListener('click', () => {
-                menuPopup.classList.remove('active');
-                contactPopup.classList.add('active');
+                closePopup(menuPopup);
+                openPopup(contactPopup);
             });
         });
 
         contactClose.addEventListener('click', () => {
-            contactPopup.classList.remove('active');
+            closePopup(contactPopup);
         });
 
         contactPopup.addEventListener('click', (event) => {
             if (event.target === contactPopup) {
-                contactPopup.classList.remove('active');
+                closePopup(contactPopup);
             }
         });
 
@@ -1078,7 +1127,7 @@
 
             const whatsappUrl = `https://wa.me/905467372284?text=${encodeURIComponent(text)}`;
             window.open(whatsappUrl, '_blank');
-            contactPopup.classList.remove('active');
+            closePopup(contactPopup);
             contactForm.reset();
         });
 
