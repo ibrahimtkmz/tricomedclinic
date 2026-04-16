@@ -170,8 +170,8 @@
 
     <!-- Popup Menu -->
     <div id="menu-popup" class="menu-popup fixed inset-0 z-[1100] bg-black/75 backdrop-blur-md">
-        <div class="h-full flex items-start justify-end p-6 md:p-10">
-            <div class="w-full max-w-sm glass-panel rounded-[30px] p-8 border border-[#d4af37]/30">
+        <div class="h-full flex items-center justify-center p-6 md:p-10">
+            <div class="w-full max-w-sm glass-panel rounded-[30px] p-8 border border-[#d4af37]/30 max-h-[90vh] overflow-y-auto">
                 <div class="flex items-center justify-between mb-8">
                     <h3 class="serif-elite text-2xl">Quick Menu</h3>
                     <button id="menu-close" class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:border-[#d4af37] transition" aria-label="Close menu">
@@ -613,7 +613,7 @@
     <!-- Contact Form Popup -->
     <div id="contact-popup" class="menu-popup fixed inset-0 z-[1200] bg-black/80 backdrop-blur-md">
         <div class="h-full flex items-center justify-center p-6">
-            <div class="w-full max-w-xl glass-panel rounded-[30px] p-6 md:p-8 border border-[#d4af37]/30">
+            <div class="w-full max-w-xl glass-panel rounded-[30px] p-6 md:p-8 border border-[#d4af37]/30 max-h-[90vh] overflow-y-auto">
                 <div class="flex items-center justify-between mb-6">
                     <h3 class="serif-elite text-3xl">Book Free Analysis</h3>
                     <button id="contact-close" class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:border-[#d4af37] transition" aria-label="Close form">
