@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>Tricomed Clinic | Istanbul's Elite Hair & Aesthetic Hub</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -17,6 +17,15 @@
             --glass-gold: rgba(212, 175, 55, 0.1);
         }
         
+
+        html {
+            width: 100%;
+            max-width: 100%;
+            -webkit-text-size-adjust: 100%;
+            text-size-adjust: 100%;
+            overflow-x: hidden;
+        }
+
         body { 
             font-family: 'Plus Jakarta Sans', sans-serif; 
             background-color: #000; 
@@ -278,11 +287,14 @@
             .open-contact-form,
             button[class*="px-12"] {
                 width: 100%;
+                min-height: 3rem;
                 justify-content: center;
+                align-items: center;
                 text-align: center;
-                padding-left: 1.2rem !important;
-                padding-right: 1.2rem !important;
-                letter-spacing: 0.18rem !important;
+                padding-left: 1rem !important;
+                padding-right: 1rem !important;
+                letter-spacing: 0.16rem !important;
+                line-height: 1.25;
             }
 
             .fixed.bottom-10.right-10 {
@@ -340,16 +352,17 @@
 
             #contact-popup .h-full {
                 align-items: flex-end;
-                padding: 0.5rem;
+                justify-content: flex-end;
+                padding: 0;
                 min-height: 100dvh;
             }
 
             #contact-popup .max-w-xl {
                 max-width: 100%;
                 width: 100%;
-                max-height: min(92vh, 92dvh);
+                max-height: 100dvh;
                 overflow-y: auto;
-                border-radius: 1.1rem;
+                border-radius: 1rem 1rem 0 0;
                 padding: 1rem;
                 padding-bottom: calc(1rem + env(safe-area-inset-bottom));
             }
@@ -364,8 +377,15 @@
             }
 
             #contact-form input,
-            #contact-form textarea {
+            #contact-form textarea,
+            #contact-form button[type="submit"] {
+                width: 100%;
                 font-size: 16px;
+                min-height: 3rem;
+            }
+
+            #contact-form input,
+            #contact-form textarea {
                 padding-top: 0.78rem;
                 padding-bottom: 0.78rem;
             }
@@ -1047,6 +1067,19 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
         lucide.createIcons();
+
+        document.addEventListener('gesturestart', (event) => {
+            event.preventDefault();
+        });
+
+        let lastTouchEnd = 0;
+        document.addEventListener('touchend', (event) => {
+            const now = Date.now();
+            if (now - lastTouchEnd <= 300) {
+                event.preventDefault();
+            }
+            lastTouchEnd = now;
+        }, { passive: false });
 
         // Header Scroll
         window.addEventListener('scroll', () => {
