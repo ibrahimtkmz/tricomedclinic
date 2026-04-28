@@ -165,6 +165,47 @@
             height: 400px;
             overflow: hidden;
         }
+
+        .lang-switcher { position: relative; }
+        .lang-menu {
+            position: absolute;
+            right: 0;
+            top: calc(100% + 0.5rem);
+            min-width: 170px;
+            padding: 0.5rem;
+            border-radius: 14px;
+            border: 1px solid rgba(212, 175, 55, 0.35);
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(12px);
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(-8px);
+            transition: all 0.25s ease;
+            z-index: 1200;
+        }
+        .lang-menu.active {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateY(0);
+        }
+        .lang-option {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            gap: 0.45rem;
+            text-align: left;
+            border-radius: 10px;
+            padding: 0.55rem 0.7rem;
+            color: rgba(255, 255, 255, 0.75);
+            font-size: 0.75rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            transition: all 0.2s ease;
+        }
+        .lang-option:hover, .lang-option.active {
+            color: #fff;
+            background: rgba(212, 175, 55, 0.22);
+        }
         .comparison-img {
             position: absolute;
             top: 0;
@@ -460,16 +501,26 @@
             </div>
             
             <nav class="hidden xl:flex items-center space-x-7 text-[10px] font-semibold tracking-[3px] uppercase">
-                <a href="/" class="text-white/70 hover:text-white transition">Anasayfa</a>
-                <a href="/dental" class="text-[#d4af37] hover:text-white transition">Diş Kliniği</a>
-                <a href="#results" class="text-white/70 hover:text-white transition">Vaka Sonuçları</a>
-                <a href="#aesthetic-solutions" class="text-white/70 hover:text-white transition">Diş Tedavileri</a>
-                <a href="#tech" class="text-white/70 hover:text-white transition">Teknoloji</a>
-                <a href="#journey" class="text-white/70 hover:text-white transition">Tedavi Süreci</a>
-                <button type="button" class="open-contact-form px-5 py-3 rounded-full bg-[#d4af37] text-black tracking-[3px] hover:bg-white transition">Tedavi Planı Al</button>
+                <a href="/" class="text-white/70 hover:text-white transition" data-i18n="nav_home">Anasayfa</a>
+                <a href="/dental" class="text-[#d4af37] hover:text-white transition" data-i18n="nav_dental">Diş Kliniği</a>
+                <a href="#results" class="text-white/70 hover:text-white transition" data-i18n="nav_results">Vaka Sonuçları</a>
+                <a href="#aesthetic-solutions" class="text-white/70 hover:text-white transition" data-i18n="nav_treatments">Diş Tedavileri</a>
+                <a href="#tech" class="text-white/70 hover:text-white transition" data-i18n="nav_tech">Teknoloji</a>
+                <a href="#journey" class="text-white/70 hover:text-white transition" data-i18n="nav_journey">Tedavi Süreci</a>
+                <button type="button" class="open-contact-form px-5 py-3 rounded-full bg-[#d4af37] text-black tracking-[3px] hover:bg-white transition" data-i18n="cta_plan">Tedavi Planı Al</button>
             </nav>
 
-            <div class="flex items-center">
+            <div class="flex items-center gap-3">
+                <div class="lang-switcher">
+                    <button id="lang-toggle" class="w-12 h-12 glass-panel rounded-full flex items-center justify-center" aria-label="Change language">
+                        <i data-lucide="languages" class="w-4 h-4"></i>
+                    </button>
+                    <div id="lang-menu" class="lang-menu">
+                        <button type="button" class="lang-option active" data-lang="tr"><span>🇹🇷</span> Türkçe</button>
+                        <button type="button" class="lang-option" data-lang="ru"><span>🇷🇺</span> Русский</button>
+                        <button type="button" class="lang-option" data-lang="it"><span>🇮🇹</span> Italiano</button>
+                    </div>
+                </div>
                 <button id="menu-toggle" class="w-12 h-12 glass-panel rounded-full flex items-center justify-center" aria-label="Open menu">
                     <i data-lucide="menu" class="w-4 h-4"></i>
                 </button>
@@ -482,19 +533,19 @@
         <div class="h-full flex items-start justify-end p-6 md:p-10">
             <div class="w-full max-w-sm glass-panel rounded-[30px] p-8 border border-[#d4af37]/30">
                 <div class="flex items-center justify-between mb-8">
-                    <h3 class="serif-elite text-2xl">Hızlı Menü</h3>
+                    <h3 class="serif-elite text-2xl" data-i18n="quick_menu">Hızlı Menü</h3>
                     <button id="menu-close" class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:border-[#d4af37] transition" aria-label="Close menu">
                         <i data-lucide="x" class="w-5 h-5"></i>
                     </button>
                 </div>
                 <nav class="space-y-5 text-[11px] tracking-[3px] uppercase font-bold text-white/70">
-                    <a class="block hover:text-[#d4af37] transition" href="/">Anasayfa</a>
-                    <a class="block text-[#d4af37] transition" href="/dental">Diş Kliniği</a>
-                    <a class="block hover:text-[#d4af37] transition" href="#results">Vaka Sonuçları</a>
-                    <a class="block hover:text-[#d4af37] transition" href="#aesthetic-solutions">Diş Tedavileri</a>
-                    <a class="block hover:text-[#d4af37] transition" href="#tech">Teknoloji</a>
-                    <a class="block hover:text-[#d4af37] transition" href="#journey">Tedavi Süreci</a>
-                    <button type="button" class="open-contact-form block text-[#d4af37] hover:text-white transition">Tedavi Planı Al</button>
+                    <a class="block hover:text-[#d4af37] transition" href="/" data-i18n="nav_home">Anasayfa</a>
+                    <a class="block text-[#d4af37] transition" href="/dental" data-i18n="nav_dental">Diş Kliniği</a>
+                    <a class="block hover:text-[#d4af37] transition" href="#results" data-i18n="nav_results">Vaka Sonuçları</a>
+                    <a class="block hover:text-[#d4af37] transition" href="#aesthetic-solutions" data-i18n="nav_treatments">Diş Tedavileri</a>
+                    <a class="block hover:text-[#d4af37] transition" href="#tech" data-i18n="nav_tech">Teknoloji</a>
+                    <a class="block hover:text-[#d4af37] transition" href="#journey" data-i18n="nav_journey">Tedavi Süreci</a>
+                    <button type="button" class="open-contact-form block text-[#d4af37] hover:text-white transition" data-i18n="cta_plan">Tedavi Planı Al</button>
                 </nav>
             </div>
         </div>
@@ -508,14 +559,14 @@
         <div class="container mx-auto grid lg:grid-cols-12 gap-10 items-center">
             <div class="lg:col-span-7 z-10">
                 <h1 class="serif-elite text-6xl md:text-9xl mb-10 leading-tight text-[#d4af37]">
-                    Sağlıklı Dişler,<br>
-                    <span class="text-stroke change-anim">Mutlu</span> Gülüşler.
+                    <span class="text-white" data-i18n="hero_line1">Sağlıklı Dişler,</span><br>
+                    <span class="text-stroke change-anim" data-i18n="hero_line2">Mutlu</span> <span data-i18n="hero_line3">Gülüşler.</span>
                 </h1>
                 <div class="flex flex-wrap gap-6">
-                    <button type="button" class="open-contact-form px-12 py-6 bg-[#d4af37] text-black font-bold text-[10px] tracking-[4px] uppercase hover:bg-white transition-all shadow-[0_10px_40px_rgba(212,175,55,0.3)]">
+                    <button type="button" class="open-contact-form px-12 py-6 bg-[#d4af37] text-black font-bold text-[10px] tracking-[4px] uppercase hover:bg-white transition-all shadow-[0_10px_40px_rgba(212,175,55,0.3)]" data-i18n="cta_assessment">
                         Ücretsiz Ön Değerlendirme
                     </button>
-                    <button class="px-12 py-6 glass-panel font-bold text-[10px] tracking-[4px] uppercase border border-white/10">
+                    <button class="px-12 py-6 glass-panel font-bold text-[10px] tracking-[4px] uppercase border border-white/10" data-i18n="cta_services">
                         Klinik Hizmetlerini İncele
                     </button>
                 </div>
@@ -1018,11 +1069,81 @@
         const menuPopup = document.getElementById('menu-popup');
         const menuToggle = document.getElementById('menu-toggle');
         const menuClose = document.getElementById('menu-close');
+        const langToggle = document.getElementById('lang-toggle');
+        const langMenu = document.getElementById('lang-menu');
+        const langOptions = document.querySelectorAll('.lang-option');
 
         const contactPopup = document.getElementById('contact-popup');
         const contactClose = document.getElementById('contact-close');
         const contactForm = document.getElementById('contact-form');
         const openContactButtons = document.querySelectorAll('.open-contact-form');
+
+        const i18nData = {
+            tr: {
+                nav_home: 'Anasayfa',
+                nav_dental: 'Diş Kliniği',
+                nav_results: 'Vaka Sonuçları',
+                nav_treatments: 'Diş Tedavileri',
+                nav_tech: 'Teknoloji',
+                nav_journey: 'Tedavi Süreci',
+                cta_plan: 'Tedavi Planı Al',
+                quick_menu: 'Hızlı Menü',
+                hero_line1: 'Sağlıklı Dişler,',
+                hero_line2: 'Mutlu',
+                hero_line3: 'Gülüşler.',
+                cta_assessment: 'Ücretsiz Ön Değerlendirme',
+                cta_services: 'Klinik Hizmetlerini İncele'
+            },
+            ru: {
+                nav_home: 'Главная',
+                nav_dental: 'Стоматология',
+                nav_results: 'Результаты',
+                nav_treatments: 'Лечение зубов',
+                nav_tech: 'Технологии',
+                nav_journey: 'Этапы лечения',
+                cta_plan: 'Получить план лечения',
+                quick_menu: 'Быстрое меню',
+                hero_line1: 'Здоровые зубы,',
+                hero_line2: 'Счастливые',
+                hero_line3: 'Улыбки.',
+                cta_assessment: 'Бесплатная первичная оценка',
+                cta_services: 'Посмотреть услуги клиники'
+            },
+            it: {
+                nav_home: 'Home',
+                nav_dental: 'Clinica dentale',
+                nav_results: 'Risultati',
+                nav_treatments: 'Trattamenti dentali',
+                nav_tech: 'Tecnologia',
+                nav_journey: 'Percorso di cura',
+                cta_plan: 'Richiedi il piano',
+                quick_menu: 'Menu rapido',
+                hero_line1: 'Denti sani,',
+                hero_line2: 'Sorrisi',
+                hero_line3: 'felici.',
+                cta_assessment: 'Valutazione preliminare gratuita',
+                cta_services: 'Scopri i servizi della clinica'
+            }
+        };
+
+        const applyLanguage = (lang) => {
+            const selected = i18nData[lang] ? lang : 'tr';
+            document.documentElement.lang = selected;
+
+            document.querySelectorAll('[data-i18n]').forEach((element) => {
+                const key = element.dataset.i18n;
+                const translation = i18nData[selected][key];
+                if (translation) {
+                    element.textContent = translation;
+                }
+            });
+
+            langOptions.forEach((option) => {
+                option.classList.toggle('active', option.dataset.lang === selected);
+            });
+
+            localStorage.setItem('tricomedDentalLang', selected);
+        };
 
         const openPopup = (popupElement) => {
             popupElement.classList.add('active');
@@ -1040,6 +1161,10 @@
             openPopup(menuPopup);
         });
 
+        langToggle.addEventListener('click', () => {
+            langMenu.classList.toggle('active');
+        });
+
         menuClose.addEventListener('click', () => {
             closePopup(menuPopup);
         });
@@ -1048,6 +1173,19 @@
             if (event.target === menuPopup) {
                 closePopup(menuPopup);
             }
+        });
+
+        document.addEventListener('click', (event) => {
+            if (!event.target.closest('.lang-switcher')) {
+                langMenu.classList.remove('active');
+            }
+        });
+
+        langOptions.forEach((option) => {
+            option.addEventListener('click', () => {
+                applyLanguage(option.dataset.lang);
+                langMenu.classList.remove('active');
+            });
         });
 
         openContactButtons.forEach((button) => {
@@ -1108,6 +1246,8 @@
                 }
             }
         });
+
+        applyLanguage(localStorage.getItem('tricomedDentalLang') || 'tr');
     </script>
 </body>
 </html>
