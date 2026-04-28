@@ -3,6 +3,10 @@
   "trailingSlash": false,
   "rewrites": [
     {
+      "source": "/dental",
+      "destination": "/dental.html"
+    },
+    {
       "source": "/(.*)",
       "destination": "/index.html"
     }

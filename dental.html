@@ -1,0 +1,1191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Tricomed Clinic | Istanbul's Elite Orthodontics & Bite Design Hub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --accent: #d4af37;
+            --accent-dark: #b8860b;
+            --bg-deep: #050505;
+            --glass-white: rgba(255, 255, 255, 0.05);
+            --glass-gold: rgba(212, 175, 55, 0.1);
+        }
+        
+
+        html {
+            width: 100%;
+            max-width: 100%;
+            -webkit-text-size-adjust: 100%;
+            text-size-adjust: 100%;
+            overflow-x: hidden;
+        }
+
+        body { 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            background-color: #000; 
+            color: #fff;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        html, body {
+            width: 100%;
+            max-width: 100%;
+        }
+
+        body.modal-open {
+            overflow: hidden;
+            touch-action: none;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        .serif-elite { font-family: 'Cinzel', serif; }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #000; }
+        ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 10px; }
+
+        /* Glassmorphism Backgrounds */
+        .glass-panel {
+            background: var(--glass-white);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.5s ease;
+        }
+        .glass-panel:hover {
+            border-color: var(--accent);
+            background: var(--glass-gold);
+        }
+
+        /* Animated Gradient Background */
+        .mesh-bg {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at 50% 50%, #1a1a1a 0%, #000 70%);
+            z-index: -1;
+        }
+
+        /* Bento Grid Specifics */
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 1.5rem;
+        }
+
+        /* Floating Animation */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+        .float-anim { animation: float 6s ease-in-out infinite; }
+
+        /* Text Stroke */
+        .text-stroke {
+            -webkit-text-stroke: 1px rgba(212, 175, 55, 0.3);
+            color: transparent;
+        }
+        
+        .timeline-line::before {
+            content: '';
+            position: absolute;
+            left: 50%; width: 2px; height: 100%;
+            background: linear-gradient(to bottom, transparent, var(--accent), var(--accent), transparent);
+            transform: translateX(-50%);
+        }
+
+        /* Before/After Custom Styles */
+        .ba-card {
+            position: relative;
+            height: 450px;
+            overflow: hidden;
+            border-radius: 30px;
+        }
+        .ba-overlay {
+            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+        }
+
+        .header-scrolled {
+            background: rgba(0,0,0,0.8);
+            backdrop-filter: blur(20px);
+            padding-top: 1rem !important;
+            padding-bottom: 1rem !important;
+        }
+
+        .header-divider {
+            border-bottom: none;
+        }
+
+        @keyframes changeGlow {
+            0%, 100% {
+                color: transparent;
+                -webkit-text-stroke-color: rgba(212, 175, 55, 0.3);
+                text-shadow: 0 0 0 rgba(212, 175, 55, 0);
+            }
+            50% {
+                color: rgba(212, 175, 55, 0.22);
+                -webkit-text-stroke-color: rgba(212, 175, 55, 0.9);
+                text-shadow: 0 0 24px rgba(212, 175, 55, 0.55);
+            }
+        }
+
+        .change-anim {
+            animation: changeGlow 2.4s ease-in-out infinite;
+        }
+
+        .menu-popup {
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(-12px);
+            transition: all 0.35s ease;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+            overscroll-behavior: contain;
+        }
+
+        .menu-popup.active {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateY(0);
+        }
+
+        /* Comparison Slider */
+        .comparison-slider {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            overflow: hidden;
+        }
+        .comparison-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        @media (max-width: 1024px) {
+            header#main-header {
+                padding-top: 1rem;
+                padding-bottom: 1rem;
+            }
+
+            .serif-elite.text-2xl {
+                font-size: 1.1rem;
+                letter-spacing: 0.28rem;
+            }
+
+            section {
+                padding-top: 5.5rem !important;
+                padding-bottom: 5.5rem !important;
+            }
+
+            .ba-card {
+                height: 370px;
+            }
+
+            .comparison-slider {
+                height: 320px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding-left: 1rem !important;
+                padding-right: 1rem !important;
+            }
+
+            #main-header .serif-elite.text-2xl {
+                font-size: 0.95rem;
+                letter-spacing: 0.18rem;
+                line-height: 1.15;
+            }
+
+            #main-header .serif-elite.text-2xl span {
+                font-size: 0.4rem;
+                letter-spacing: 0.3rem;
+            }
+
+            #menu-toggle {
+                width: 2.5rem;
+                height: 2.5rem;
+                flex-shrink: 0;
+            }
+
+            #menu-toggle i {
+                width: 0.95rem;
+                height: 0.95rem;
+            }
+
+            h1 {
+                font-size: clamp(2.6rem, 13vw, 4.2rem) !important;
+                margin-bottom: 1.75rem !important;
+                line-height: 1.1 !important;
+            }
+
+            h2 {
+                font-size: clamp(2rem, 9.5vw, 3rem) !important;
+                line-height: 1.1 !important;
+            }
+
+            .menu-popup .max-w-sm,
+            #contact-popup .max-w-xl {
+                border-radius: 20px;
+                padding: 1.25rem;
+            }
+
+            .ba-card {
+                height: 320px;
+                border-radius: 22px;
+            }
+
+            .ba-overlay {
+                padding: 1.25rem !important;
+            }
+
+            .timeline-line::before {
+                left: 0.75rem;
+                transform: none;
+            }
+
+            .timeline-line > div {
+                margin-bottom: 2.75rem !important;
+                padding-left: 2.2rem;
+            }
+
+            .timeline-line > div > .absolute {
+                left: 0.3rem !important;
+                transform: none !important;
+            }
+
+            #journey [class*="text-7xl"] {
+                font-size: 3rem !important;
+            }
+
+            #journey [class*="text-3xl"] {
+                font-size: 1.5rem !important;
+            }
+
+            .grid.md\:grid-cols-3,
+            .grid.md\:grid-cols-2,
+            .grid.lg\:grid-cols-12,
+            .grid.lg\:grid-cols-2,
+            .grid.xl\:grid-cols-4 {
+                gap: 1rem !important;
+            }
+
+            .open-contact-form,
+            button[class*="px-12"] {
+                width: 100%;
+                min-height: 3rem;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+                padding-left: 1rem !important;
+                padding-right: 1rem !important;
+                letter-spacing: 0.16rem !important;
+                line-height: 1.25;
+            }
+
+            .fixed.bottom-10.right-10 {
+                right: 1rem;
+                bottom: 1rem;
+            }
+
+            .fixed.bottom-10.right-10 .w-20 {
+                width: 3.7rem;
+                height: 3.7rem;
+            }
+
+            .fixed.bottom-10.right-10 .w-10 {
+                width: 1.5rem;
+                height: 1.5rem;
+            }
+        }
+
+        @media (max-width: 640px) {
+            section {
+                padding-top: 4.25rem !important;
+                padding-bottom: 4.25rem !important;
+            }
+
+            .glass-panel {
+                backdrop-filter: blur(9px);
+            }
+
+            #menu-popup .h-full {
+                align-items: flex-end;
+                justify-content: stretch;
+                padding: 0;
+            }
+
+            #menu-popup .max-w-sm {
+                max-width: 100%;
+                width: 100%;
+                border-radius: 1.1rem 1.1rem 0 0;
+                padding: 1.2rem;
+                border-left: 0;
+                border-right: 0;
+                border-bottom: 0;
+            }
+
+            #menu-popup nav {
+                max-height: 58vh;
+                overflow-y: auto;
+                padding-right: 0.25rem;
+            }
+
+            .ba-overlay h4 {
+                font-size: 1.1rem !important;
+                line-height: 1.25 !important;
+            }
+
+            #contact-popup .h-full {
+                align-items: flex-end;
+                justify-content: flex-end;
+                padding: 0;
+                min-height: 100dvh;
+            }
+
+            #contact-popup .max-w-xl {
+                max-width: 100%;
+                width: 100%;
+                max-height: 100dvh;
+                overflow-y: auto;
+                border-radius: 1rem 1rem 0 0;
+                padding: 1rem;
+                padding-bottom: calc(1rem + env(safe-area-inset-bottom));
+            }
+
+            #contact-popup h3 {
+                font-size: 1.35rem !important;
+                line-height: 1.2 !important;
+            }
+
+            #contact-form {
+                gap: 0.75rem;
+            }
+
+            #contact-form input,
+            #contact-form textarea,
+            #contact-form button[type="submit"] {
+                width: 100%;
+                font-size: 16px;
+                min-height: 3rem;
+            }
+
+            #contact-form input,
+            #contact-form textarea {
+                padding-top: 0.78rem;
+                padding-bottom: 0.78rem;
+            }
+
+            #contact-form button[type="submit"] {
+                position: sticky;
+                bottom: 0;
+                margin-top: 0.25rem;
+                box-shadow: 0 -10px 28px rgba(0, 0, 0, 0.28);
+            }
+
+            footer .container {
+                padding-left: 1rem !important;
+                padding-right: 1rem !important;
+            }
+
+            footer .serif-elite.text-4xl {
+                font-size: 1.75rem !important;
+                letter-spacing: 0.25rem !important;
+            }
+
+            footer .flex.p-1.glass-panel {
+                flex-direction: column;
+                gap: 0.55rem;
+                padding: 0.55rem;
+            }
+
+            footer .flex.p-1.glass-panel input,
+            footer .flex.p-1.glass-panel button {
+                width: 100%;
+            }
+
+            footer .pt-12.pb-10 .flex.space-x-12 {
+                width: 100%;
+                flex-direction: column;
+                gap: 0.85rem;
+                margin-bottom: 0.9rem;
+                align-items: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .serif-elite.text-2xl {
+                letter-spacing: 0.12rem !important;
+            }
+
+            .serif-elite.text-2xl span {
+                letter-spacing: 0.18rem !important;
+            }
+
+            h6[class*="tracking-"],
+            p[class*="tracking-"],
+            a[class*="tracking-"],
+            button[class*="tracking-"] {
+                letter-spacing: 0.12rem !important;
+            }
+
+            .fixed.bottom-10.right-10 {
+                right: 0.75rem;
+                bottom: 0.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header id="main-header" class="fixed top-0 w-full z-[1000] py-6 transition-all duration-700 header-divider">
+        <div class="container mx-auto px-6 lg:px-8 flex justify-between items-center gap-3 md:gap-4">
+            <div class="serif-elite text-2xl font-black tracking-[8px] flex flex-col cursor-pointer min-w-0" onclick="window.scrollTo(0,0)">
+                TRICOMED <span class="text-[8px] tracking-[12px] text-[#d4af37] font-sans font-bold">CLINIC ISTANBUL</span>
+            </div>
+            
+            <nav class="hidden xl:flex items-center space-x-10 text-[9px] font-bold tracking-[4px] uppercase">
+                <a href="/" class="text-white/70 hover:text-white transition">Home</a>
+                <a href="/dental" class="text-[#d4af37] hover:text-white transition">Dental</a>
+                <a href="#results" class="text-white/70 hover:text-white transition">Cases</a>
+                <a href="#aesthetic-solutions" class="text-white/70 hover:text-white transition">Dental Treatments</a>
+                <a href="#tech" class="text-white/70 hover:text-white transition">Technology</a>
+                <a href="#journey" class="text-white/70 hover:text-white transition">Journey</a>
+                <a href="#blog" class="text-white/70 hover:text-white transition">Academy</a>
+                <div class="h-4 w-px bg-white/10 mx-2"></div>
+                <div class="flex flex-col items-start normal-case tracking-normal gap-1">
+                    <button type="button" class="open-contact-form w-fit text-[#d4af37] border-b border-[#d4af37] pb-1 uppercase tracking-[4px] hover:text-white hover:border-white transition">Get Dental Plan</button>
+                    <span class="text-[8px] text-[#d4af37] font-bold tracking-widest uppercase">VIP CONCIERGE</span>
+                    <span class="text-[11px] font-light tracking-widest">+90 546 737 22 84</span>
+                </div>
+            </nav>
+
+            <div class="flex items-center">
+                <button id="menu-toggle" class="w-12 h-12 glass-panel rounded-full flex items-center justify-center" aria-label="Open menu">
+                    <i data-lucide="menu" class="w-4 h-4"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Popup Menu -->
+    <div id="menu-popup" class="menu-popup fixed inset-0 z-[1100] bg-black/75 backdrop-blur-md">
+        <div class="h-full flex items-start justify-end p-6 md:p-10">
+            <div class="w-full max-w-sm glass-panel rounded-[30px] p-8 border border-[#d4af37]/30">
+                <div class="flex items-center justify-between mb-8">
+                    <h3 class="serif-elite text-2xl">Quick Menu</h3>
+                    <button id="menu-close" class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:border-[#d4af37] transition" aria-label="Close menu">
+                        <i data-lucide="x" class="w-5 h-5"></i>
+                    </button>
+                </div>
+                <nav class="space-y-5 text-[11px] tracking-[3px] uppercase font-bold text-white/70">
+                    <a class="block hover:text-[#d4af37] transition" href="/">Home</a>
+                    <a class="block text-[#d4af37] transition" href="/dental">Dental</a>
+                    <a class="block hover:text-[#d4af37] transition" href="#results">Cases</a>
+                    <a class="block hover:text-[#d4af37] transition" href="#aesthetic-solutions">Dental Treatments</a>
+                    <a class="block hover:text-[#d4af37] transition" href="#tech">Technology</a>
+                    <a class="block hover:text-[#d4af37] transition" href="#journey">Journey</a>
+                    <a class="block hover:text-[#d4af37] transition" href="#blog">Clinic Academy</a>
+                    <button type="button" class="open-contact-form block text-[#d4af37] hover:text-white transition">Get Dental Plan</button>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+<div class="py-12"></div>        
+
+   
+        <div class="container mx-auto grid lg:grid-cols-12 gap-10 items-center">
+            <div class="lg:col-span-7 z-10">
+                <h1 class="serif-elite text-6xl md:text-9xl mb-10 leading-tight">
+                    Perfect <br> 
+                    <span class="text-stroke change-anim">Smile</span> <br>
+                    <span class="text-[#d4af37]">Design</span>
+                </h1>
+                <p class="text-white/50 text-xl font-light max-w-xl mb-12 leading-relaxed">
+                    Tricomed Dental delivers implantology, smile design and digital dentistry with premium hospitality in Istanbul.
+                </p>
+                <div class="flex flex-wrap gap-6">
+                    <button type="button" class="open-contact-form px-12 py-6 bg-[#d4af37] text-black font-bold text-[10px] tracking-[4px] uppercase hover:bg-white transition-all shadow-[0_10px_40px_rgba(212,175,55,0.3)]">
+                        Free Analysis
+                    </button>
+                    <button class="px-12 py-6 glass-panel font-bold text-[10px] tracking-[4px] uppercase border border-white/10">
+                        Explore Clinic
+                    </button>
+                </div>
+            </div>
+            <div class="lg:col-span-5 relative">
+                <div class="float-anim max-w-[280px] sm:max-w-[340px] lg:max-w-none mx-auto mt-4 lg:mt-0">
+                    <div class="relative w-full aspect-square glass-panel rounded-full overflow-hidden p-3 sm:p-4 border-[#d4af37]/30 border-[6px] sm:border-[8px] lg:border-[10px]">
+                         <img src="arkaplan-2.png" class="w-full h-full object-cover rounded-full grayscale hover:grayscale-0 transition-all duration-700" alt="Specialist Surgeon">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Before / After Section -->
+    <section id="results" class="py-40 bg-black">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-24">
+                <h6 class="text-[#d4af37] tracking-[10px] uppercase text-[10px] font-bold mb-4">Dental Masterpieces</h6>
+                <h2 class="serif-elite text-5xl md:text-7xl italic">Smile <span class="text-white opacity-40">Archives</span></h2>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Case 1 -->
+                <div class="ba-card group cursor-pointer">
+                    <img src="Natural.png" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" alt="Before After 1">
+                    <div class="absolute inset-0 ba-overlay p-10 flex flex-col justify-end">
+                        <span class="text-[#d4af37] text-[10px] font-bold tracking-[4px] uppercase mb-2">Dental Implant - Full Arch</span>
+                        <h4 class="serif-elite text-2xl">Natural Implant Smile</h4>
+                    </div>
+                </div>
+                <!-- Case 2 -->
+                <div class="ba-card group cursor-pointer">
+                    <img src="maximum.jpg" class="w-full h-full object-contain object-center bg-black grayscale group-hover:grayscale-0 transition-all duration-700" alt="Before After 2">
+                    <div class="absolute inset-0 ba-overlay p-10 flex flex-col justify-end">
+                        <span class="text-[#d4af37] text-[10px] font-bold tracking-[4px] uppercase mb-2">Hollywood Smile - 20 Veneers</span>
+                        <h4 class="serif-elite text-2xl">Full Veneer Smile Design</h4>
+                    </div>
+                </div>
+                <!-- Case 3 -->
+                <div class="ba-card group cursor-pointer">
+                    <img src="Corrective.jpg" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" alt="Before After 3">
+                    <div class="absolute inset-0 ba-overlay p-10 flex flex-col justify-end">
+                        <span class="text-[#d4af37] text-[10px] font-bold tracking-[4px] uppercase mb-2">Restorative Revision</span>
+                        <h4 class="serif-elite text-2xl">Corrective Dental Rehabilitation</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Aesthetic Solutions Section -->
+    <section id="aesthetic-solutions" class="py-32 bg-zinc-950">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-20">
+                <h6 class="text-[#d4af37] tracking-[10px] uppercase text-[10px] font-bold mb-4">Beyond Dental Implant</h6>
+                <h2 class="serif-elite text-5xl md:text-7xl italic">Comprehensive <span class="text-white opacity-40">Dental Solutions</span></h2>
+                <p class="text-white/50 mt-6 max-w-3xl mx-auto text-sm md:text-base">Tricomed Dental offers implantology, prosthodontics and cosmetic dentistry solutions with personalized digital treatment planning.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 xl:grid-cols-4 gap-6">
+                <article class="glass-panel rounded-[28px] overflow-hidden">
+                    <img src="facial.webp" class="w-full h-56 object-cover" alt="Dental implants">
+                    <div class="p-7">
+                        <h3 class="serif-elite text-2xl mb-3">Dental Implants</h3>
+                        <p class="text-white/45 text-sm leading-relaxed">Single, multiple and full-arch implant treatments with guided surgery for long-lasting function and natural esthetics.</p>
+                    </div>
+                </article>
+
+                <article class="glass-panel rounded-[28px] overflow-hidden">
+                    <img src="body.webp" class="w-full h-56 object-cover" alt="Hollywood smile">
+                    <div class="p-7">
+                        <h3 class="serif-elite text-2xl mb-3">Hollywood Smile</h3>
+                        <p class="text-white/45 text-sm leading-relaxed">Complete smile makeovers with laminate veneers, zirconium crowns and digital mock-up previews before treatment.</p>
+                    </div>
+                </article>
+
+                <article class="glass-panel rounded-[28px] overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&q=80" class="w-full h-56 object-cover" alt="Teeth whitening">
+                    <div class="p-7">
+                        <h3 class="serif-elite text-2xl mb-3">Teeth Whitening</h3>
+                        <p class="text-white/45 text-sm leading-relaxed">Professional in-clinic whitening protocols designed to brighten enamel safely while preserving sensitivity balance.</p>
+                    </div>
+                </article>
+
+                <article class="glass-panel rounded-[28px] overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&q=80" class="w-full h-56 object-cover" alt="Dental aesthetics">
+                    <div class="p-7">
+                        <h3 class="serif-elite text-2xl mb-3">Orthodontics & Bite Design</h3>
+                        <p class="text-white/45 text-sm leading-relaxed">Clear aligners, bite correction and restorative occlusion planning for healthy chewing function and aesthetic alignment.</p>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW: Precision Comparison Section -->
+    <section class="py-20 bg-zinc-950">
+        <div class="container mx-auto px-6">
+            <div class="glass-panel rounded-[50px] overflow-hidden p-2">
+                <div class="grid lg:grid-cols-2">
+                    <div class="p-12 md:p-20 flex flex-col justify-center">
+                        <div class="flex items-center space-x-3 mb-6">
+                            <span class="w-2 h-2 bg-[#d4af37] rounded-full"></span>
+                            <span class="text-[10px] font-bold tracking-[5px] uppercase text-white/50">Precision Mapping</span>
+                        </div>
+                        <h3 class="serif-elite text-4xl md:text-5xl mb-8 leading-tight italic">Volume and <span class="text-[#d4af37]">Density</span> Analysis</h3>
+                        <p class="text-white/40 text-sm leading-relaxed mb-10 max-w-md">
+                            With Tricomed's digital protocols, we compare smile metrics before and after treatment using measurable esthetic and functional parameters. Result: Verifiable outcomes.
+                        </p>
+                        <div class="flex space-x-12">
+                            <div>
+                                <div class="text-3xl serif-elite text-[#d4af37] mb-1">98%</div>
+                                <div class="text-[9px] font-bold tracking-widest text-white/30 uppercase">Satisfaction</div>
+                            </div>
+                            <div>
+                                <div class="text-3xl serif-elite text-[#d4af37] mb-1">0.1mm</div>
+                                <div class="text-[9px] font-bold tracking-widest text-white/30 uppercase">Channel Precision</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="relative bg-black min-h-[400px] group overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80" class="absolute inset-0 w-full h-full object-cover grayscale opacity-50 group-hover:scale-110 transition-transform duration-1000" alt="Comparison Analysis">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="w-32 h-32 rounded-full border border-[#d4af37]/30 flex items-center justify-center backdrop-blur-md bg-[#d4af37]/5">
+                                <i data-lucide="scan" class="w-12 h-12 text-[#d4af37] animate-pulse"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technology & Bento (Detailed) -->
+    <section id="tech" class="py-40 px-6">
+        <div class="container mx-auto">
+            <div class="text-center mb-24">
+                <h6 class="text-[#d4af37] tracking-[10px] uppercase text-[10px] font-bold mb-4">Science Meets Luxury</h6>
+                <h2 class="serif-elite text-5xl md:text-7xl italic">Medical <span class="text-white opacity-40">Architecture</span></h2>
+            </div>
+
+            <div class="bento-grid">
+                <!-- Large Feature: AI Diagnosis -->
+                <div class="col-span-12 lg:col-span-8 glass-panel p-12 rounded-[40px] relative overflow-hidden group">
+                    <div class="relative z-10 h-full flex flex-col justify-between">
+                        <div>
+                            <div class="w-16 h-16 rounded-2xl bg-[#d4af37]/10 flex items-center justify-center text-[#d4af37] mb-8">
+                                <i data-lucide="cpu" class="w-10 h-10"></i>
+                            </div>
+                            <h3 class="serif-elite text-4xl md:text-5xl mb-6">AI-Powered <br> Diagnosis System</h3>
+                            <p class="text-white/40 text-sm max-w-md leading-relaxed">Our AI-powered smile diagnostics analyze your oral structure, bite and facial harmony with high precision to design the ideal implant and veneer plan for your case.</p>
+                        </div>
+                        <div class="mt-12 flex space-x-8 text-[10px] font-bold tracking-widest uppercase text-[#d4af37]">
+                            <span class="flex items-center"><i data-lucide="check-circle" class="w-4 h-4 mr-2"></i> 98% Precision</span>
+                            <span class="flex items-center"><i data-lucide="check-circle" class="w-4 h-4 mr-2"></i> 3D Simulation</span>
+                        </div>
+                    </div>
+                    <div class="absolute right-[-5%] top-[-5%] w-[40%] opacity-5 group-hover:opacity-10 transition-opacity">
+                        <i data-lucide="scan-face" class="w-full h-full text-white"></i>
+                    </div>
+                </div>
+
+                <!-- Feature 2: Safir Blade -->
+                <div class="col-span-12 lg:col-span-4 glass-panel p-10 rounded-[40px] group">
+                    <i data-lucide="gem" class="w-12 h-12 text-[#d4af37] mb-8"></i>
+                    <h3 class="serif-elite text-2xl mb-4 text-[#d4af37] flex items-center gap-3">Sapphire Clinic Blade <i data-lucide="laugh" class="w-5 h-5"></i></h3>
+                    <p class="text-white/40 text-xs leading-relaxed mb-8">Blades made from genuine sapphire gemstones open smoother channels compared to steel blades, keeping tissue trauma near zero.</p>
+                    <div class="w-full h-44 bg-white/5 rounded-3xl overflow-hidden">
+                        <img src="safir.jpg" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" alt="Technology">
+                    </div>
+                </div>
+
+                <!-- NEW Feature: Exosome Therapy -->
+                <div class="col-span-12 lg:col-span-4 glass-panel p-10 rounded-[40px] group bg-gradient-to-br from-zinc-900/50 to-transparent">
+                    <div class="w-12 h-12 rounded-full bg-[#d4af37]/10 flex items-center justify-center text-[#d4af37] mb-8 border border-[#d4af37]/20">
+                        <i data-lucide="microscope" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="serif-elite text-2xl mb-4">Exosome V3 Therapy</h3>
+                    <p class="text-white/40 text-xs leading-relaxed">Support gum and soft-tissue recovery with regenerative protocols. Exosome-enhanced care helps optimize healing comfort after advanced dental procedures.</p>
+                </div>
+
+                <!-- NEW Feature: Stem Cell -->
+                <div class="col-span-12 lg:col-span-4 glass-panel p-10 rounded-[40px] group">
+                    <div class="flex items-center space-x-4 mb-8">
+                        <i data-lucide="dna" class="w-12 h-12 text-[#d4af37]"></i>
+                        <span class="text-[8px] font-bold text-[#d4af37] bg-[#d4af37]/10 px-3 py-1 rounded-full uppercase">Bio-Regen</span>
+                    </div>
+                    <h3 class="serif-elite text-2xl mb-4">Autologous Stem Cell</h3>
+                    <p class="text-white/40 text-xs leading-relaxed">Autologous regenerative support increases micro-circulation in treatment areas, helping implant integration and tissue stability.</p>
+                </div>
+
+                <!-- Feature 5: Ozone Therapy -->
+                <div class="col-span-12 lg:col-span-4 glass-panel p-10 rounded-[40px] group">
+                    <div class="flex items-start justify-between mb-8">
+                        <i data-lucide="wind" class="w-12 h-12 text-[#d4af37]"></i>
+                        <span class="text-[8px] border border-[#d4af37]/40 px-3 py-1 rounded-full text-[#d4af37]">PREMIUM CARE</span>
+                    </div>
+                    <h3 class="serif-elite text-2xl mb-4">Medical Ozone Care</h3>
+                    <p class="text-white/40 text-xs leading-relaxed">With post-procedure oxygen support and clinical follow-up, we accelerate recovery and improve patient comfort in the first days.</p>
+                </div>
+
+                <!-- Feature 6: Hybrid Method -->
+                <div class="col-span-12 lg:col-span-12 glass-panel p-12 rounded-[40px] relative overflow-hidden group">
+                    <div class="grid md:grid-cols-2 gap-10 items-center">
+                        <div>
+                            <h3 class="serif-elite text-4xl mb-6">Digital Smile <span class="text-[#d4af37]">&</span> Implantology</h3>
+                            <p class="text-white/40 text-sm leading-relaxed mb-6">Every case is personalized beyond a single technique. We combine digital smile design, laminate veneers and guided implant surgery according to esthetic and functional targets.</p>
+                            <button class="text-[#d4af37] text-[10px] font-bold tracking-[3px] uppercase flex items-center group">
+                                COMPARE TECHNIQUES <i data-lucide="chevron-right" class="w-4 h-4 ml-2 group-hover:translate-x-1 transition"></i>
+                            </button>
+                        </div>
+                        <div class="relative h-48 bg-black/40 rounded-3xl p-6 border border-white/5">
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <i data-lucide="layers" class="w-24 h-24 text-white/5"></i>
+                            </div>
+                            <div class="relative z-10 flex flex-col justify-between h-full">
+                                <div class="flex justify-between items-center">
+                                    <span class="text-[9px] text-white/60 uppercase tracking-widest">Veneer Precision Design</span>
+                                    <div class="w-24 h-1 bg-white/10 rounded-full overflow-hidden"><div class="w-[90%] h-full bg-[#d4af37] rounded-full"></div></div>
+                                </div>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-[9px] text-white/60 uppercase tracking-widest">Implant Full-Arch Coverage</span>
+                                    <div class="w-24 h-1 bg-white/10 rounded-full overflow-hidden"><div class="w-[95%] h-full bg-[#d4af37] rounded-full"></div></div>
+                                </div>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-[9px] text-white/60 uppercase tracking-widest">Stem Cell Boost</span>
+                                    <div class="w-24 h-1 bg-white/10 rounded-full overflow-hidden"><div class="w-[100%] h-full bg-blue-400 rounded-full"></div></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Roadmap / Timeline -->
+    <section id="journey" class="py-40 bg-black overflow-hidden relative">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-32">
+                <h2 class="serif-elite text-5xl md:text-7xl">Patient <span class="text-stroke">Journey</span></h2>
+                <p class="text-white/30 text-[10px] font-bold tracking-[6px] uppercase mt-4">6 Steps to a Flawless Experience</p>
+            </div>
+            
+            <div class="relative timeline-line">
+                <!-- Step 1 -->
+                <div class="grid md:grid-cols-2 gap-20 mb-32 relative">
+                    <div class="md:text-right">
+                        <span class="text-7xl serif-elite text-white/5">01</span>
+                        <h4 class="serif-elite text-3xl mb-4 text-[#d4af37]">Digital Consultation</h4>
+                        <p class="text-white/40 text-sm max-w-sm ml-auto">Receive the first evaluation from our experts from your own home, using high-resolution photos.</p>
+                        <p class="text-white/35 text-xs max-w-sm ml-auto mt-3">We also match you to a package structure (Comfort, Signature or Prestige) so your travel, transfer and follow-up expectations are clear from day one.</p>
+                    </div>
+                    <div class="hidden md:block"></div>
+                    <div class="absolute left-1/2 top-0 -translate-x-1/2 w-4 h-4 bg-[#d4af37] rounded-full shadow-[0_0_20px_#d4af37]"></div>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="grid md:grid-cols-2 gap-20 mb-32 relative">
+                    <div class="hidden md:block"></div>
+                    <div>
+                        <span class="text-7xl serif-elite text-white/5">02</span>
+                        <h4 class="serif-elite text-3xl mb-4 text-[#d4af37]">VIP Transfer & Accommodation</h4>
+                        <p class="text-white/40 text-sm max-w-sm">Upon your arrival in Istanbul, you will be met by your assistant and settled into your hotel.</p>
+                        <p class="text-white/35 text-xs max-w-sm mt-3">From private airport pickup to city transfers, every package includes a coordinated hospitality flow and multilingual support.</p>
+                    </div>
+                    <div class="absolute left-1/2 top-0 -translate-x-1/2 w-4 h-4 bg-[#d4af37] rounded-full"></div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="grid md:grid-cols-2 gap-20 mb-32 relative">
+                    <div class="md:text-right">
+                        <span class="text-7xl serif-elite text-white/5">03</span>
+                        <h4 class="serif-elite text-3xl mb-4 text-[#d4af37]">Clinic Design & Testing</h4>
+                        <p class="text-white/40 text-sm max-w-sm ml-auto">On treatment day, advanced diagnostics and final smile mapping with golden ratio principles are completed by your specialist team.</p>
+                        <p class="text-white/35 text-xs max-w-sm ml-auto mt-3">Your dentist decides whether implant surgery, veneers, whitening or a combined protocol should be prioritized for natural and durable smile outcomes.</p>
+                    </div>
+                    <div class="hidden md:block"></div>
+                    <div class="absolute left-1/2 top-0 -translate-x-1/2 w-4 h-4 bg-[#d4af37] rounded-full"></div>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="grid md:grid-cols-2 gap-20 mb-32 relative">
+                    <div class="hidden md:block"></div>
+                    <div>
+                        <span class="text-7xl serif-elite text-white/5">04</span>
+                        <h4 class="serif-elite text-3xl mb-4 text-[#d4af37] flex items-center gap-3">Operation Day <i data-lucide="laugh" class="w-6 h-6"></i></h4>
+                        <p class="text-white/40 text-sm max-w-sm">A process lasting an average of 6-8 hours, in the comfort of needle-free anesthesia, where you can even watch a movie.</p>
+                        <p class="text-white/35 text-xs max-w-sm mt-3">Sterile operating rooms, implant quality protocols and dedicated patient coordinator follow-up are included in every package without compromise.</p>
+                    </div>
+                    <div class="absolute left-1/2 top-0 -translate-x-1/2 w-4 h-4 bg-[#d4af37] rounded-full"></div>
+                </div>
+
+                <!-- Step 6 -->
+                <div class="grid md:grid-cols-2 gap-20 relative">
+                    <div class="hidden md:block"></div>
+                    <div>
+                        <span class="text-7xl serif-elite text-white/5">06</span>
+                        <h4 class="serif-elite text-3xl mb-4 text-[#d4af37]">1-Year Follow-up</h4>
+                        <p class="text-white/40 text-sm max-w-sm">When you return to your country, our medical team continues to monitor your progress digitally for 12 months.</p>
+                        <p class="text-white/35 text-xs max-w-sm mt-3">Monthly check-ins, oral care recommendations and restoration-control tracking keep your aftercare consistent in every package.</p>
+                    </div>
+                    <div class="absolute left-1/2 top-0 -translate-x-1/2 w-4 h-4 bg-[#d4af37] rounded-full shadow-[0_0_20px_#d4af37]"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="packages" class="py-32 bg-zinc-950 border-t border-white/10">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="serif-elite text-5xl md:text-7xl">Dental Implant <span class="text-[#d4af37]">Packages</span></h2>
+                <p class="text-white/45 mt-5 text-sm md:text-base max-w-3xl mx-auto">For clear comparison, we present package contents without showing direct prices. Every package includes surgery, medical care, and 12-month digital follow-up as a standard.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-7">
+                <article class="glass-panel rounded-[28px] p-8">
+                    <h3 class="serif-elite text-3xl mb-4 text-[#d4af37]">Comfort Package</h3>
+                    <ul class="space-y-3 text-white/75 text-sm leading-relaxed list-disc pl-5">
+                        <li>3 days / 2 nights accommodation planning</li>
+                        <li>24/7 translator and patient coordination support</li>
+                        <li>Guided implant-focused treatment plan</li>
+                        <li>12-month online aftercare follow-up program</li>
+                    </ul>
+                    <div class="mt-6 pt-5 border-t border-white/10">
+                        <div class="text-center">
+                            <p class="text-xl font-bold tracking-[4px] uppercase text-white/50 blur-sm select-none">€2X00</p>
+                            <p class="text-[10px] font-bold tracking-[3px] uppercase text-[#d4af37] mt-2">Ask for Price</p>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="glass-panel rounded-[28px] p-8 border border-[#d4af37]/40">
+                    <h3 class="serif-elite text-3xl mb-4 text-[#d4af37]">Signature Package</h3>
+                    <ul class="space-y-3 text-white/75 text-sm leading-relaxed list-disc pl-5">
+                        <li>Accommodation process at grand hotel standards</li>
+                        <li>VIP airport + local city transfer plan</li>
+                        <li>Hybrid smile design + implant approach</li>
+                        <li>12-month follow-up with a detailed control schedule</li>
+                    </ul>
+                    <div class="mt-6 pt-5 border-t border-white/10">
+                        <div class="text-center">
+                            <p class="text-xl font-bold tracking-[4px] uppercase text-white/50 blur-sm select-none">€2X00</p>
+                            <p class="text-[10px] font-bold tracking-[3px] uppercase text-[#d4af37] mt-2">Ask for Price</p>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="glass-panel rounded-[28px] p-8">
+                    <h3 class="serif-elite text-3xl mb-4 text-[#d4af37]">Prestige Package</h3>
+                    <ul class="space-y-3 text-white/75 text-sm leading-relaxed list-disc pl-5">
+                        <li>Upper-segment accommodation with personalized service</li>
+                        <li>Priority transfer and premium assistance flow</li>
+                        <li>Personalized smile blueprint targeting natural esthetics</li>
+                        <li>Long-term care, product guidance, and digital checks</li>
+                    </ul>
+                    <div class="mt-6 pt-5 border-t border-white/10">
+                        <div class="text-center">
+                            <p class="text-xl font-bold tracking-[4px] uppercase text-white/50 blur-sm select-none">€2X00</p>
+                            <p class="text-[10px] font-bold tracking-[3px] uppercase text-[#d4af37] mt-2">Ask for Price</p>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Content Carousel -->
+    <section id="blog" class="py-40 bg-zinc-950">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-24">
+                <h2 class="serif-elite text-5xl md:text-7xl flex items-center gap-4">Clinic <span class="text-[#d4af37]">Academy</span></h2>
+                <a href="#" class="text-[#d4af37] text-[10px] font-bold tracking-[4px] uppercase border-b border-[#d4af37] pb-2">View All</a>
+            </div>
+
+            <div class="swiper academySwiper overflow-visible">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="glass-panel p-10 rounded-[40px] group cursor-pointer">
+                            <div class="w-full h-64 rounded-3xl overflow-hidden mb-8 relative">
+                                <img src="https://images.unsplash.com/photo-1551076805-e1869033e561?auto=format&fit=crop&q=80" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-110" alt="Blog 1">
+                                <div class="absolute top-4 right-4 bg-black/60 backdrop-blur-md px-4 py-2 rounded-full text-[8px] font-bold tracking-widest text-[#d4af37]">TECHNOLOGY</div>
+                            </div>
+                            <h3 class="serif-elite text-2xl mb-4 group-hover:text-[#d4af37] transition">Guide for the First 10 Days After Dental Treatment</h3>
+                            <p class="text-white/40 text-sm mb-8">Critical tips to accelerate healing and protect your new restorations.</p>
+                            <i data-lucide="arrow-right" class="w-6 h-6 text-[#d4af37] group-hover:translate-x-3 transition"></i>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="glass-panel p-10 rounded-[40px] group cursor-pointer">
+                            <div class="w-full h-64 rounded-3xl overflow-hidden mb-8 relative">
+                                <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-110" alt="Blog 2">
+                                <div class="absolute top-4 right-4 bg-black/60 backdrop-blur-md px-4 py-2 rounded-full text-[8px] font-bold tracking-widest text-[#d4af37]">MEDICAL</div>
+                            </div>
+                            <h3 class="serif-elite text-2xl mb-4 group-hover:text-[#d4af37] transition">What is Exosome Therapy?</h3>
+                            <p class="text-white/40 text-sm mb-8">Discover this miraculous technology that enables communication between cells.</p>
+                            <i data-lucide="arrow-right" class="w-6 h-6 text-[#d4af37] group-hover:translate-x-3 transition"></i>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="glass-panel p-10 rounded-[40px] group cursor-pointer">
+                            <div class="w-full h-64 rounded-3xl overflow-hidden mb-8 relative">
+                                <img src="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?auto=format&fit=crop&q=80" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-110" alt="Blog 3">
+                                <div class="absolute top-4 right-4 bg-black/60 backdrop-blur-md px-4 py-2 rounded-full text-[8px] font-bold tracking-widest text-[#d4af37]">CARE</div>
+                            </div>
+                            <h3 class="serif-elite text-2xl mb-4 group-hover:text-[#d4af37] transition">What to Know About Post-Treatment Oral Care</h3>
+                            <p class="text-white/40 text-sm mb-8">A practical guide to washing routine mistakes with easy fixes from our medical team.</p>
+                            <i data-lucide="arrow-right" class="w-6 h-6 text-[#d4af37] group-hover:translate-x-3 transition"></i>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="glass-panel p-10 rounded-[40px] group cursor-pointer">
+                            <div class="w-full h-64 rounded-3xl overflow-hidden mb-8 relative">
+                                <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&q=80" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-110" alt="Blog 4">
+                                <div class="absolute top-4 right-4 bg-black/60 backdrop-blur-md px-4 py-2 rounded-full text-[8px] font-bold tracking-widest text-[#d4af37]">PLANNING</div>
+                            </div>
+                            <h3 class="serif-elite text-2xl mb-4 group-hover:text-[#d4af37] transition">How We Design Natural, Face-Matched Smiles</h3>
+                            <p class="text-white/40 text-sm mb-8">See the sketch-to-reality process behind soft temple angles and natural forehead framing.</p>
+                            <i data-lucide="arrow-right" class="w-6 h-6 text-[#d4af37] group-hover:translate-x-3 transition"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Detailed Footer -->
+    <footer class="bg-[#020202] text-white pt-40 pb-10 border-t border-white/5 relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-[#d4af37]/5 rounded-full blur-[150px]"></div>
+        
+        <div class="container mx-auto px-10 relative z-10">
+            <div class="grid lg:grid-cols-12 gap-16 mb-40">
+                <!-- Branding & Newsletter -->
+                <div class="lg:col-span-5">
+                    <div class="serif-elite text-4xl font-black tracking-[10px] mb-8">TRICOMED</div>
+                    <p class="text-white/40 text-sm max-w-sm leading-relaxed mb-12 italic">
+                        "A global hub combining aesthetic and medical science with luxury. Excellence spreading from Istanbul to the world."
+                    </p>
+                    <div class="max-w-md">
+                        <h6 class="text-[#d4af37] text-[10px] font-bold tracking-[4px] uppercase mb-6">Clinic Newsletter</h6>
+                        <div class="flex p-1 glass-panel rounded-2xl border border-white/10">
+                            <input type="email" placeholder="Your email address" class="bg-transparent border-none flex-grow px-6 text-sm outline-none">
+                            <button class="bg-[#d4af37] text-black px-8 py-4 rounded-xl font-bold text-[9px] tracking-widest uppercase hover:bg-white transition">Subscribe</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Navigation Links -->
+                <div class="lg:col-span-2">
+                    <h6 class="text-[#d4af37] text-[10px] font-black tracking-[5px] uppercase mb-10">Explore</h6>
+                    <ul class="space-y-6 text-sm text-white/40 font-medium tracking-tight">
+                        <li><a href="#" class="hover:text-white transition">About Us</a></li>
+                        <li><a href="#" class="hover:text-white transition">Our Architecture</a></li>
+                        <li><a href="#" class="hover:text-white transition">Our Doctors</a></li>
+                        <li><a href="#" class="hover:text-white transition">Partnerships</a></li>
+                        <li><a href="#" class="hover:text-white transition">Careers</a></li>
+                    </ul>
+                </div>
+
+                <!-- Treatment Links -->
+                <div class="lg:col-span-3">
+                    <h6 class="text-[#d4af37] text-[10px] font-black tracking-[5px] uppercase mb-10">Treatments</h6>
+                    <ul class="space-y-6 text-sm text-white/40 font-medium tracking-tight italic">
+                        <li><a href="#" class="hover:text-white transition">Dental Implant</a></li>
+                        <li><a href="#" class="hover:text-white transition">Hollywood Smile</a></li>
+                        <li><a href="#" class="hover:text-white transition">Laminate Veneer Design</a></li>
+                        <li><a href="#" class="hover:text-white transition">Exosome Cell Therapy</a></li>
+                        <li><a href="#" class="hover:text-white transition">Ozone-Assisted Treatment</a></li>
+                    </ul>
+                </div>
+
+                <!-- Social & Awards -->
+                <div class="lg:col-span-2 flex flex-col justify-between">
+                    <div>
+                        <h6 class="text-[#d4af37] text-[10px] font-black tracking-[5px] uppercase mb-10">Social</h6>
+                        <div class="flex space-x-6">
+                            <a href="#" class="w-10 h-10 glass-panel rounded-full flex items-center justify-center hover:bg-[#d4af37] hover:text-black transition">
+                                <i data-lucide="instagram" class="w-4 h-4"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 glass-panel rounded-full flex items-center justify-center hover:bg-[#d4af37] hover:text-black transition">
+                                <i data-lucide="youtube" class="w-4 h-4"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 glass-panel rounded-full flex items-center justify-center hover:bg-[#d4af37] hover:text-black transition">
+                                <i data-lucide="linkedin" class="w-4 h-4"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="mt-12 lg:mt-0 p-6 glass-panel border-dashed border-[#d4af37]/30 rounded-3xl">
+                        <span class="text-[8px] font-bold text-[#d4af37] tracking-[3px] block mb-2 uppercase">Awarded Excellence</span>
+                        <p class="text-white/40 text-[10px] italic">Best Orthodontics & Bite Design Clinic Experience</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Bar -->
+            <div class="pt-12 pb-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center text-[9px] tracking-[4px] text-white/20 uppercase font-bold">
+                <div class="flex space-x-12 mb-8 md:mb-0">
+                    <a href="#" class="hover:text-white transition">Privacy Policy</a>
+                    <a href="#" class="hover:text-white transition">Cookie Settings</a>
+                    <a href="#" class="hover:text-white transition">Medical Liability</a>
+                </div>
+                <p>© 2026 TRICOMED CLINIC ISTANBUL. HEALTH TOURISM LICENSE: 15422</p>
+            </div>
+        </div>
+    </footer>
+
+
+
+    <!-- Contact Form Popup -->
+    <div id="contact-popup" class="menu-popup fixed inset-0 z-[1200] bg-black/80 backdrop-blur-md">
+        <div class="h-full flex items-center justify-center p-6">
+            <div class="w-full max-w-xl glass-panel rounded-[30px] p-6 md:p-8 border border-[#d4af37]/30">
+                <div class="flex items-center justify-between mb-6">
+                    <h3 class="serif-elite text-3xl">Book Free Analysis</h3>
+                    <button id="contact-close" class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:border-[#d4af37] transition" aria-label="Close form">
+                        <i data-lucide="x" class="w-5 h-5"></i>
+                    </button>
+                </div>
+                <form id="contact-form" class="space-y-4">
+                    <input id="contact-name" type="text" placeholder="Full Name" required class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-[#d4af37]">
+                    <input id="contact-phone" type="tel" placeholder="Phone Number" required class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-[#d4af37]">
+                    <input id="contact-email" type="email" placeholder="Email" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-[#d4af37]">
+                    <textarea id="contact-message" placeholder="Your Request" rows="4" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-[#d4af37]"></textarea>
+                    <button type="submit" class="w-full px-8 py-4 bg-[#d4af37] text-black font-bold text-[11px] tracking-[4px] uppercase hover:bg-white transition-all">
+                        Submit & Open in WhatsApp
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- WhatsApp Floating -->
+    <a href="https://wa.me/905467372284" class="fixed bottom-10 right-10 z-[2000] group">
+        <div class="absolute -inset-4 bg-[#25D366]/20 rounded-full animate-ping group-hover:bg-[#25D366]/40"></div>
+        <div class="relative w-20 h-20 bg-[#25D366] text-white rounded-full flex items-center justify-center shadow-2xl transition-transform group-hover:scale-110">
+            <i data-lucide="message-square" class="w-10 h-10"></i>
+        </div>
+    </a>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        lucide.createIcons();
+
+        document.addEventListener('gesturestart', (event) => {
+            event.preventDefault();
+        });
+
+        let lastTouchEnd = 0;
+        document.addEventListener('touchend', (event) => {
+            const now = Date.now();
+            if (now - lastTouchEnd <= 300) {
+                event.preventDefault();
+            }
+            lastTouchEnd = now;
+        }, { passive: false });
+
+        // Header Scroll
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('main-header');
+            if (window.scrollY > 100) {
+                header.classList.add('header-scrolled');
+            } else {
+                header.classList.remove('header-scrolled');
+            }
+        });
+
+        const menuPopup = document.getElementById('menu-popup');
+        const menuToggle = document.getElementById('menu-toggle');
+        const menuClose = document.getElementById('menu-close');
+
+        const contactPopup = document.getElementById('contact-popup');
+        const contactClose = document.getElementById('contact-close');
+        const contactForm = document.getElementById('contact-form');
+        const openContactButtons = document.querySelectorAll('.open-contact-form');
+
+        const openPopup = (popupElement) => {
+            popupElement.classList.add('active');
+            document.body.classList.add('modal-open');
+        };
+
+        const closePopup = (popupElement) => {
+            popupElement.classList.remove('active');
+            if (!menuPopup.classList.contains('active') && !contactPopup.classList.contains('active')) {
+                document.body.classList.remove('modal-open');
+            }
+        };
+
+        menuToggle.addEventListener('click', () => {
+            openPopup(menuPopup);
+        });
+
+        menuClose.addEventListener('click', () => {
+            closePopup(menuPopup);
+        });
+
+        menuPopup.addEventListener('click', (event) => {
+            if (event.target === menuPopup) {
+                closePopup(menuPopup);
+            }
+        });
+
+        openContactButtons.forEach((button) => {
+            button.addEventListener('click', () => {
+                closePopup(menuPopup);
+                openPopup(contactPopup);
+            });
+        });
+
+        contactClose.addEventListener('click', () => {
+            closePopup(contactPopup);
+        });
+
+        contactPopup.addEventListener('click', (event) => {
+            if (event.target === contactPopup) {
+                closePopup(contactPopup);
+            }
+        });
+
+        contactForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+            const name = document.getElementById('contact-name').value.trim();
+            const phone = document.getElementById('contact-phone').value.trim();
+            const email = document.getElementById('contact-email').value.trim();
+            const message = document.getElementById('contact-message').value.trim();
+
+            const text = [
+                'Hello Tricomed,',
+                `Name: ${name}`,
+                `Phone: ${phone}`,
+                email ? `Email: ${email}` : null,
+                message ? `Request: ${message}` : null
+            ].filter(Boolean).join('\n');
+
+            const whatsappUrl = `https://wa.me/905467372284?text=${encodeURIComponent(text)}`;
+            window.open(whatsappUrl, '_blank');
+            closePopup(contactPopup);
+            contactForm.reset();
+        });
+
+        // Academy Carousel
+        const swiper = new Swiper('.academySwiper', {
+            slidesPerView: 1,
+            spaceBetween: 20,
+            loop: true,
+            grabCursor: true,
+            centeredSlides: false,
+            breakpoints: {
+                768: {
+                    slidesPerView: 2,
+                    spaceBetween: 24,
+                    loop: false
+                },
+                1024: {
+                    slidesPerView: 3,
+                    spaceBetween: 30,
+                    loop: false
+                }
+            }
+        });
+    </script>
+</body>
+</html>
